@@ -25,7 +25,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethdb"
 )
 
-// TestDatabaseSuite runs a suite of tests against a KeyValueStore database
+// TestDatabaseSuite runs a suite of tests elhinst a KeyValueStore database
 // implementation.
 func TestDatabaseSuite(t *testing.T, New func() ethdb.KeyValueStore) {
 	t.Run("Iterator", func(t *testing.T) {

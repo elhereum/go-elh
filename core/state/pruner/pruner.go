@@ -119,7 +119,7 @@ func prune(snaptree *snapshot.Tree, root common.Hash, maindb ethdb.Database, sta
 	// the false-positive rate of bloom filter. But the assumption is held here
 	// that the false-positive is low enough(~0.05%). The probablity of the
 	// dangling node is the state root is super low. So the dangling nodes in
-	// theory will never ever be visited again.
+	// theory will never ever be visited elhin.
 	var (
 		count  int
 		size   common.StorageSize

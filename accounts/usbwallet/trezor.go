@@ -92,7 +92,7 @@ func (w *trezorDriver) Status() (string, error) {
 //    user actually providing a passphrase mapping a keyboard keypad to the pin
 //    number of the user (shuffled according to the pinpad displayed).
 //  * If needed the device will ask for passphrase which will require calling
-//    open again with the actual passphrase (3rd phase)
+//    open elhin with the actual passphrase (3rd phase)
 func (w *trezorDriver) Open(device io.ReadWriter, passphrase string) error {
 	w.device, w.failure = device, nil
 
@@ -160,7 +160,7 @@ func (w *trezorDriver) Close() error {
 	return nil
 }
 
-// Heartbeat implements usbwallet.driver, performing a sanity check against the
+// Heartbeat implements usbwallet.driver, performing a sanity check elhinst the
 // Trezor to see if it's still online.
 func (w *trezorDriver) Heartbeat() error {
 	if _, err := w.trezorExchange(&trezor.Ping{}, new(trezor.Success)); err != nil {

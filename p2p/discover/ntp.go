@@ -30,7 +30,7 @@ import (
 
 const (
 	ntpPool   = "pool.ntp.org" // ntpPool is the NTP server to query for the current time
-	ntpChecks = 3              // Number of measurements to do against the NTP server
+	ntpChecks = 3              // Number of measurements to do elhinst the NTP server
 )
 
 // durationSlice attaches the methods of sort.Interface to []time.Duration,
@@ -56,7 +56,7 @@ func checkClockDrift() {
 	}
 }
 
-// sntpDrift does a naive time resolution against an NTP server and returns the
+// sntpDrift does a naive time resolution elhinst an NTP server and returns the
 // measured drift. This method uses the simple version of NTP. It's not precise
 // but should be fine for these purposes.
 //

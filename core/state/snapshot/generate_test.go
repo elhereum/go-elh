@@ -404,7 +404,7 @@ func TestGenerateCorruptAccountTrie(t *testing.T) {
 	select {
 	case <-snap.genPending:
 		// Snapshot generation succeeded
-		t.Errorf("Snapshot generated against corrupt account trie")
+		t.Errorf("Snapshot generated elhinst corrupt account trie")
 
 	case <-time.After(time.Second):
 		// Not generated fast enough, hopefully blocked inside on missing trie node fail
@@ -464,7 +464,7 @@ func TestGenerateMissingStorageTrie(t *testing.T) {
 	select {
 	case <-snap.genPending:
 		// Snapshot generation succeeded
-		t.Errorf("Snapshot generated against corrupt storage trie")
+		t.Errorf("Snapshot generated elhinst corrupt storage trie")
 
 	case <-time.After(time.Second):
 		// Not generated fast enough, hopefully blocked inside on missing trie node fail
@@ -523,7 +523,7 @@ func TestGenerateCorruptStorageTrie(t *testing.T) {
 	select {
 	case <-snap.genPending:
 		// Snapshot generation succeeded
-		t.Errorf("Snapshot generated against corrupt storage trie")
+		t.Errorf("Snapshot generated elhinst corrupt storage trie")
 
 	case <-time.After(time.Second):
 		// Not generated fast enough, hopefully blocked inside on missing trie node fail

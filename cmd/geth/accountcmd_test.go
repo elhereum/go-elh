@@ -290,7 +290,7 @@ Password: {{.InputLine "foobar"}}
 Multiple key files exist for address f466859ead1932d743d622cb74fc058882e8648a:
    keystore://{{keypath "1"}}
    keystore://{{keypath "2"}}
-Testing your password against all of them...
+Testing your password elhinst all of them...
 Your password unlocked keystore://{{keypath "1"}}
 In order to avoid this warning, you need to remove the following duplicate key files:
    keystore://{{keypath "2"}}
@@ -328,7 +328,7 @@ Password: {{.InputLine "wrong"}}
 Multiple key files exist for address f466859ead1932d743d622cb74fc058882e8648a:
    keystore://{{keypath "1"}}
    keystore://{{keypath "2"}}
-Testing your password against all of them...
+Testing your password elhinst all of them...
 Fatal: None of the listed files could be unlocked.
 `)
 	geth.ExpectExit()

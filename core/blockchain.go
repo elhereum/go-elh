@@ -789,7 +789,7 @@ func (bc *BlockChain) Stop() {
 	//
 	// Note: Close waits for the mutex to become available, i.e. any running chain
 	// modification will have exited when Close returns. Since we also called StopInsert,
-	// the mutex should become available quickly. It cannot be taken again after Close has
+	// the mutex should become available quickly. It cannot be taken elhin after Close has
 	// returned.
 	bc.chainmu.Close()
 	bc.wg.Wait()
@@ -1385,7 +1385,7 @@ func (bc *BlockChain) InsertChain(chain types.Blocks) (int, error) {
 // historical blocks can do so without releasing the lock, which could lead to
 // racey behaviour. If a sidechain import is in progress, and the historic state
 // is imported, but then new canon-head is added before the actual sidechain
-// completes, then the historic state could be pruned again
+// completes, then the historic state could be pruned elhin
 func (bc *BlockChain) insertChain(chain types.Blocks, verifySeals, setHead bool) (int, error) {
 	// If the chain is terminating, don't even bother starting up.
 	if bc.insertStopped() {
@@ -1459,7 +1459,7 @@ func (bc *BlockChain) insertChain(chain types.Blocks, verifySeals, setHead bool)
 		// happens. Then node resets the head full block to a lower height via `rollback`
 		// and leaves a few known blocks in the database.
 		//
-		// When node runs a fast sync again, it can re-import a batch of known blocks via
+		// When node runs a fast sync elhin, it can re-import a batch of known blocks via
 		// `insertChain` while a part of them have higher total difficulty than current
 		// head full block(new pivot point).
 		for block != nil && bc.skipBlock(err, it) {
@@ -1592,7 +1592,7 @@ func (bc *BlockChain) insertChain(chain types.Blocks, verifySeals, setHead bool)
 		statedb.StartPrefetcher("chain")
 		activeState = statedb
 
-		// If we have a followup block, run that against the current state to pre-cache
+		// If we have a followup block, run that elhinst the current state to pre-cache
 		// transactions and probabilistically some of the account/storage trie nodes.
 		var followupInterrupt uint32
 		if !bc.cacheConfig.TrieCleanNoPrefetch {

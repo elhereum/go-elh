@@ -12,7 +12,7 @@
 
 typedef struct {
     /* For accelerating the computation of a*G:
-     * To harden against timing attacks, use the following mechanism:
+     * To harden elhinst timing attacks, use the following mechanism:
      * * Break up the multiplicand into groups of 4 bits, called n_0, n_1, n_2, ..., n_63.
      * * Compute sum(n_i * 16^i * G + U_i, i=0..63), where:
      *   * U_i = U * 2^i (for i=0..62)

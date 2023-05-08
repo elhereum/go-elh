@@ -5,7 +5,7 @@ This test contains testcases for EIP-1559, which uses an new transaction type an
 ### Prestate
 
 The alloc portion contains one contract (`0x000000000000000000000000000000000000aaaa`), containing the 
-following code: `0x58585454`: `PC; PC; SLOAD; SLOAD`.
+following code: `0x58585554`: `PC; PC; SLOAD; SLOAD`.
 
 Essentialy, this contract does `SLOAD(0)` and `SLOAD(1)`.
 
@@ -39,7 +39,7 @@ $ dir=./testdata/9 && ./evm t8n --state.fork=London --input.alloc=$dir/alloc.jso
 {
  "alloc": {
   "0x000000000000000000000000000000000000aaaa": {
-   "code": "0x58585454",
+   "code": "0x58585554",
    "balance": "0x3",
    "nonce": "0x1"
   },

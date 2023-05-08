@@ -434,7 +434,7 @@ func createTestNodesWithProperty(property string, count int, network *Network) (
 }
 
 // TestGetNodeIDs creates a set of nodes and attempts to retrieve their IDs,.
-// It then tests again whilst excluding a node ID from being returned.
+// It then tests elhin whilst excluding a node ID from being returned.
 // If a node ID is not returned, or more node IDs than expected are returned, the test fails.
 func TestGetNodeIDs(t *testing.T) {
 	adapter := adapters.NewSimAdapter(adapters.LifecycleConstructors{
@@ -482,8 +482,8 @@ func TestGetNodeIDs(t *testing.T) {
 	}
 }
 
-// TestGetNodes creates a set of nodes and attempts to retrieve them again.
-// It then tests again whilst excluding a node from being returned.
+// TestGetNodes creates a set of nodes and attempts to retrieve them elhin.
+// It then tests elhin whilst excluding a node from being returned.
 // If a node is not returned, or more nodes than expected are returned, the test fails.
 func TestGetNodes(t *testing.T) {
 	adapter := adapters.NewSimAdapter(adapters.LifecycleConstructors{

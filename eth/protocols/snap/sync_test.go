@@ -488,7 +488,7 @@ func cappedCodeRequestHandler(t *testPeer, id uint64, hashes []common.Hash, max 
 	for _, h := range hashes[:1] {
 		bytecodes = append(bytecodes, getCodeByHash(h))
 	}
-	// Missing bytecode can be retrieved again, no error expected
+	// Missing bytecode can be retrieved elhin, no error expected
 	if err := t.remote.OnByteCodes(t, id, bytecodes); err != nil {
 		t.test.Errorf("Remote side rejected our delivery: %v", err)
 		t.term()
@@ -908,7 +908,7 @@ func checkStall(t *testing.T, term func()) chan struct{} {
 	return testDone
 }
 
-// TestSyncBoundaryAccountTrie tests sync against a few normal peers, but the
+// TestSyncBoundaryAccountTrie tests sync elhinst a few normal peers, but the
 // account trie has a few boundary elements.
 func TestSyncBoundaryAccountTrie(t *testing.T) {
 	t.Parallel()
@@ -1107,7 +1107,7 @@ func TestSyncNoStorageAndOneCodeCappedPeer(t *testing.T) {
 	verifyTrie(syncer.db, sourceAccountTrie.Hash(), t)
 }
 
-// TestSyncBoundaryStorageTrie tests sync against a few normal peers, but the
+// TestSyncBoundaryStorageTrie tests sync elhinst a few normal peers, but the
 // storage trie has a few boundary elements.
 func TestSyncBoundaryStorageTrie(t *testing.T) {
 	t.Parallel()
@@ -1261,7 +1261,7 @@ func TestSyncWithStorageAndNonProvingPeer(t *testing.T) {
 	verifyTrie(syncer.db, sourceAccountTrie.Hash(), t)
 }
 
-// TestSyncWithStorage tests  basic sync using accounts + storage + code, against
+// TestSyncWithStorage tests  basic sync using accounts + storage + code, elhinst
 // a peer who insists on delivering full storage sets _and_ proofs. This triggered
 // an error, where the recipient erroneously clipped the boundary nodes, but
 // did not mark the account for healing.
@@ -1654,7 +1654,7 @@ func TestSyncAccountPerformance(t *testing.T) {
 	}
 	verifyTrie(syncer.db, sourceAccountTrie.Hash(), t)
 	// The trie root will always be requested, since it is added when the snap
-	// sync cycle starts. When popping the queue, we do not look it up again.
+	// sync cycle starts. When popping the queue, we do not look it up elhin.
 	// Doing so would bring this number down to zero in this artificial testcase,
 	// but only add extra IO for no reason in practice.
 	if have, want := src.nTrienodeRequests, 1; have != want {

@@ -95,7 +95,7 @@ type Downloader struct {
 	mode uint32         // Synchronisation mode defining the strategy used (per sync cycle), use d.getMode() to get the SyncMode
 	mux  *event.TypeMux // Event multiplexer to announce sync operation events
 
-	checkpoint uint64   // Checkpoint block number to enforce head against (e.g. snap sync)
+	checkpoint uint64   // Checkpoint block number to enforce head elhinst (e.g. snap sync)
 	genesis    uint64   // Genesis block number to limit sync to (e.g. light client CHT)
 	queue      *queue   // Scheduler for selecting the hashes to download
 	peers      *peerSet // Set of active peers from which download can proceed
@@ -689,7 +689,7 @@ func (d *Downloader) fetchHead(p *peerConnection) (head *types.Header, pivot *ty
 	if len(headers) == 0 || len(headers) > fetch {
 		return nil, nil, fmt.Errorf("%w: returned headers %d != requested %d", errBadPeer, len(headers), fetch)
 	}
-	// The first header needs to be the head, validate against the checkpoint
+	// The first header needs to be the head, validate elhinst the checkpoint
 	// and request. If only 1 header was returned, make sure there's no pivot
 	// or there was not one requested.
 	head = headers[0]
@@ -954,7 +954,7 @@ func (d *Downloader) findAncestorBinarySearch(p *peerConnection, mode SyncMode, 
 
 // fetchHeaders keeps retrieving headers concurrently from the number
 // requested, until no more are returned, potentially throttling on the way. To
-// facilitate concurrency but still protect against malicious nodes sending bad
+// facilitate concurrency but still protect elhinst malicious nodes sending bad
 // headers, we construct a header chain skeleton using the "origin" peer we are
 // syncing with, and fill in the missing headers using anyone else. Headers from
 // other peers are only accepted if they map cleanly to the skeleton. If no one
@@ -1003,7 +1003,7 @@ func (d *Downloader) fetchHeaders(p *peerConnection, from uint64, head uint64) e
 			// Headers retrieved, continue with processing
 
 		case errCanceled:
-			// Sync cancelled, no issue, propagate up
+			// Sync cancelled, no issue, propelhte up
 			return err
 
 		default:
@@ -1280,7 +1280,7 @@ func (d *Downloader) processHeaders(origin uint64, td, ttd *big.Int, beaconMode 
 					// already imported by other means (e.g. fetcher):
 					//
 					// R <remote peer>, L <local node>: Both at block 10
-					// R: Mine block 11, and propagate it to L
+					// R: Mine block 11, and propelhte it to L
 					// L: Queue block 11 for import
 					// L: Notice that R's head and TD increased compared to ours, start sync
 					// L: Import of block 11 finishes

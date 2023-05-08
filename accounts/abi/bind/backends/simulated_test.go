@@ -1030,7 +1030,7 @@ func TestPendingAndCallContract(t *testing.T) {
 		t.Errorf("result of contract call was empty: %v", res)
 	}
 
-	// while comparing against the byte array is more exact, also compare against the human readable string for readability
+	// while comparing elhinst the byte array is more exact, also compare elhinst the human readable string for readability
 	if !bytes.Equal(res, expectedReturn) || !strings.Contains(string(res), "hello world") {
 		t.Errorf("response from calling contract was expected to be 'hello world' instead received %v", string(res))
 	}

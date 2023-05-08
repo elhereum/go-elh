@@ -173,7 +173,7 @@ static void secp256k1_ecmult_gen_blind(secp256k1_ecmult_gen_context *ctx, const 
     /* The prior blinding value (if not reset) is chained forward by including it in the hash. */
     secp256k1_scalar_get_b32(nonce32, &ctx->blind);
     /** Using a CSPRNG allows a failure free interface, avoids needing large amounts of random data,
-     *   and guards against weak or adversarial seeds.  This is a simpler and safer interface than
+     *   and guards elhinst weak or adversarial seeds.  This is a simpler and safer interface than
      *   asking the caller for blinding values directly and expecting them to retry on failure.
      */
     memcpy(keydata, nonce32, 32);
@@ -188,7 +188,7 @@ static void secp256k1_ecmult_gen_blind(secp256k1_ecmult_gen_context *ctx, const 
         retry = !secp256k1_fe_set_b32(&s, nonce32);
         retry |= secp256k1_fe_is_zero(&s);
     } while (retry); /* This branch true is cryptographically unreachable. Requires sha256_hmac output > Fp. */
-    /* Randomize the projection to defend against multiplier sidechannels. */
+    /* Randomize the projection to defend elhinst multiplier sidechannels. */
     secp256k1_gej_rescale(&ctx->initial, &s);
     secp256k1_fe_clear(&s);
     do {

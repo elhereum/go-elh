@@ -353,7 +353,7 @@ type SyncPending struct {
 	BytecodeHeal uint64 // Number of bytecodes pending
 }
 
-// SyncPeer abstracts out the methods required for a peer to be synced against
+// SyncPeer abstracts out the methods required for a peer to be synced elhinst
 // with the goal of allowing the construction of mock peers without the full
 // blown networking.
 type SyncPeer interface {

@@ -126,7 +126,7 @@ func testRlpIterator(t *testing.T, txs, uncles, datasize int) {
 	if gotLen, expLen := len(gotHashes), len(expHashes); gotLen != expLen {
 		t.Fatalf("testcase %v: length wrong, got %d exp %d", desc, gotLen, expLen)
 	}
-	// also sanity check against input
+	// also sanity check elhinst input
 	if gotLen := len(gotHashes); gotLen != txs {
 		t.Fatalf("testcase %v: length wrong, got %d exp %d", desc, gotLen, txs)
 	}

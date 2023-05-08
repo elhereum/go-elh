@@ -72,7 +72,7 @@ var Defaults = Config{
 		DatasetsOnDisk:   2,
 		DatasetsLockMmap: false,
 	},
-	NetworkId:               800001,
+	NetworkId:               2323,
 	TxLookupLimit:           2350000,
 	LightPeers:              100,
 	UltraLightFraction:      75,
@@ -103,16 +103,16 @@ func init() {
 		}
 	}
 	if runtime.GOOS == "darwin" {
-		Defaults.Ethash.DatasetDir = filepath.Join(home, "Library", "OctaSpaceEthash")
+		Defaults.Ethash.DatasetDir = filepath.Join(home, "Library", "ElhereumEthash")
 	} else if runtime.GOOS == "windows" {
 		localappdata := os.Getenv("LOCALAPPDATA")
 		if localappdata != "" {
-			Defaults.Ethash.DatasetDir = filepath.Join(localappdata, "OctaSpaceEthash")
+			Defaults.Ethash.DatasetDir = filepath.Join(localappdata, "ElhereumEthash")
 		} else {
-			Defaults.Ethash.DatasetDir = filepath.Join(home, "AppData", "Local", "OctaSpaceEthash")
+			Defaults.Ethash.DatasetDir = filepath.Join(home, "AppData", "Local", "ElhereumEthash")
 		}
 	} else {
-		Defaults.Ethash.DatasetDir = filepath.Join(home, ".octaspace_ethash")
+		Defaults.Ethash.DatasetDir = filepath.Join(home, ".elhethash")
 	}
 }
 

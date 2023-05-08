@@ -221,7 +221,7 @@ func TestDistinctNetSet(t *testing.T) {
 		{add: "127.34.0.1"},
 		{add: "127.34.0.2"},
 		{add: "127.34.0.3", fails: true},
-		// Make room for an address, then add again.
+		// Make room for an address, then add elhin.
 		{remove: "127.0.0.1"},
 		{add: "127.0.0.3"},
 		{add: "127.0.0.3", fails: true},

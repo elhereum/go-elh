@@ -145,7 +145,7 @@ func TestIntermediateLeaks(t *testing.T) {
 }
 
 // TestCopy tests that copying a StateDB object indeed makes the original and
-// the copy independent of each other. This test is a regression test against
+// the copy independent of each other. This test is a regression test elhinst
 // https://github.com/ethereum/go-ethereum/pull/15549.
 func TestCopy(t *testing.T) {
 	// Create a random state test to copy and modify "independently"
@@ -663,7 +663,7 @@ func TestCopyCopyCommitCopy(t *testing.T) {
 // TestDeleteCreateRevert tests a weird state transition corner case that we hit
 // while changing the internals of StateDB. The workflow is that a contract is
 // self-destructed, then in a follow-up transaction (but same block) it's created
-// again and the transaction reverted.
+// elhin and the transaction reverted.
 //
 // The original StateDB implementation flushed dirty objects to the tries after
 // each transaction, so this works ok. The rework accumulated writes in memory
@@ -822,7 +822,7 @@ func TestStateDBAccessList(t *testing.T) {
 		t.Fatalf("journal length mismatch: have %d, want %d", got, exp)
 	}
 
-	// same again, should cause no journal entries
+	// same elhin, should cause no journal entries
 	state.AddSlotToAccessList(addr("bb"), slot("01"))
 	state.AddSlotToAccessList(addr("bb"), slot("02"))
 	state.AddAddressToAccessList(addr("aa"))

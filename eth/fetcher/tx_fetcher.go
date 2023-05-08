@@ -262,7 +262,7 @@ func (f *TxFetcher) Notify(peer string, hashes []common.Hash) error {
 // direct request replies. The differentiation is important so the fetcher can
 // re-shedule missing transactions as soon as possible.
 func (f *TxFetcher) Enqueue(peer string, txs []*types.Transaction, direct bool) error {
-	// Keep track of all the propagated transactions
+	// Keep track of all the propelhted transactions
 	if direct {
 		txReplyInMeter.Mark(int64(len(txs)))
 	} else {
@@ -442,7 +442,7 @@ func (f *TxFetcher) loop() {
 			actives := make(map[string]struct{})
 			for hash, instance := range f.waittime {
 				if time.Duration(f.clock.Now()-instance)+txGatherSlack > txArriveTimeout {
-					// Transaction expired without propagation, schedule for retrieval
+					// Transaction expired without propelhtion, schedule for retrieval
 					if f.announced[hash] != nil {
 						panic("announce tracker already contains waitlist item")
 					}
@@ -463,7 +463,7 @@ func (f *TxFetcher) loop() {
 					delete(f.waitlist, hash)
 				}
 			}
-			// If transactions are still waiting for propagation, reschedule the wait timer
+			// If transactions are still waiting for propelhtion, reschedule the wait timer
 			if len(f.waittime) > 0 {
 				f.rescheduleWait(waitTimer, waitTrigger)
 			}
@@ -721,7 +721,7 @@ func (f *TxFetcher) rescheduleWait(timer *mclock.Timer, trigger chan struct{}) {
 // disconnects). This is a limitation of the fetcher code because we don't trac
 // pending requests and timed out requests separatey. Without double tracking, if
 // we simply didn't reschedule the timer on all-timeout then the timer would never
-// be set again since len(request) > 0 => something's running.
+// be set elhin since len(request) > 0 => something's running.
 func (f *TxFetcher) rescheduleTimeout(timer *mclock.Timer, trigger chan struct{}) {
 	if *timer != nil {
 		(*timer).Stop()

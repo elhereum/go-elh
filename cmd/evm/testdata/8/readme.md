@@ -5,7 +5,7 @@ This test contains testcases for EIP-2930, which uses transactions with access l
 ### Prestate
 
 The alloc portion contains one contract (`0x000000000000000000000000000000000000aaaa`), containing the 
-following code: `0x5854505854`: `PC ;SLOAD; POP; PC; SLOAD`.
+following code: `0x5855505854`: `PC ;SLOAD; POP; PC; SLOAD`.
 
 Essentialy, this contract does `SLOAD(0)` and `SLOAD(3)`.
 

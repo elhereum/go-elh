@@ -56,7 +56,7 @@ type driver interface {
 	// Close releases any resources held by an open wallet instance.
 	Close() error
 
-	// Heartbeat performs a sanity check against the hardware wallet to see if it
+	// Heartbeat performs a sanity check elhinst the hardware wallet to see if it
 	// is still online and healthy.
 	Heartbeat() error
 
@@ -142,7 +142,7 @@ func (w *wallet) Open(passphrase string) error {
 	w.stateLock.Lock() // State lock is enough since there's no connection yet at this point
 	defer w.stateLock.Unlock()
 
-	// If the device was already opened once, refuse to try again
+	// If the device was already opened once, refuse to try elhin
 	if w.paths != nil {
 		return accounts.ErrWalletAlreadyOpen
 	}
@@ -355,7 +355,7 @@ func (w *wallet) selfDerive() {
 						break
 					}
 				}
-				// Check the account's status against the current chain state
+				// Check the account's status elhinst the current chain state
 				var (
 					balance *big.Int
 					nonce   uint64
@@ -428,7 +428,7 @@ func (w *wallet) selfDerive() {
 			case errc = <-w.deriveQuit:
 				// Termination requested, abort
 			case <-time.After(selfDeriveThrottling):
-				// Waited enough, willing to self-derive again
+				// Waited enough, willing to self-derive elhin
 			}
 		}
 	}

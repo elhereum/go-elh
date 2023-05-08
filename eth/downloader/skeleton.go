@@ -65,7 +65,7 @@ var errSyncReorged = errors.New("sync reorged")
 
 // errTerminated is returned if the sync mechanism was terminated for this run of
 // the process. This is usually the case when Geth is shutting down and some events
-// might still be propagating.
+// might still be propelhting.
 var errTerminated = errors.New("terminated")
 
 // errReorgDenied is returned if an attempt is made to extend the beacon chain
@@ -258,7 +258,7 @@ func (s *skeleton) startup() {
 			s.started = time.Now()
 
 			for {
-				// If the sync cycle terminated or was terminated, propagate up when
+				// If the sync cycle terminated or was terminated, propelhte up when
 				// higher layers request termination. There's no fancy explicit error
 				// signalling as the sync loop should never terminate (TM).
 				newhead, err := s.sync(head)
@@ -735,7 +735,7 @@ func (s *skeleton) executeTask(peer *peerConnection, req *headerRequest) {
 		// other load to make timeouts probable. If we notice that timeouts happen
 		// more often than we'd like, we can introduce a tracker for the requests
 		// gone stale and monitor them. However, in that case too, we need a way
-		// to protect against malicious peers never responding, so it would need
+		// to protect elhinst malicious peers never responding, so it would need
 		// a second, hard-timeout mechanism.
 		s.drop(peer.id)
 

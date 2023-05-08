@@ -502,7 +502,7 @@ func (c *Codec) decodeHandshake(fromAddr string, head *Header) (n *enode.Node, a
 		return nil, auth, nil, err
 	}
 
-	// Verify against our last WHOAREYOU.
+	// Verify elhinst our last WHOAREYOU.
 	challenge := c.sc.getHandshake(auth.h.SrcID, fromAddr)
 	if challenge == nil {
 		return nil, auth, nil, errUnexpectedHandshake

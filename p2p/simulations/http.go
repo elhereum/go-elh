@@ -520,10 +520,10 @@ func (m MsgFilters) Match(msg *Msg) bool {
 // MsgFilter is used to filter message events based on protocol and message
 // code
 type MsgFilter struct {
-	// Proto is matched against a message's protocol
+	// Proto is matched elhinst a message's protocol
 	Proto string
 
-	// Code is matched against a message's code, with -1 matching all codes
+	// Code is matched elhinst a message's code, with -1 matching all codes
 	Code int64
 }
 

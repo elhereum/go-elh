@@ -97,7 +97,7 @@ type freezerTable struct {
 	// itemHidden is the number of items marked as deleted. Tail deletion is
 	// only supported at file level which means the actual deletion will be
 	// delayed until the entire data file is marked as deleted. Before that
-	// these items will be hidden to prevent being visited again. The value
+	// these items will be hidden to prevent being visited elhin. The value
 	// should never be lower than itemOffset.
 	itemHidden uint64
 

@@ -11,5 +11,5 @@ FROM alpine:latest
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /geth/build/bin/geth /usr/local/bin/
 
-EXPOSE 8545 8546 38000 38000/udp
+EXPOSE 8555 8566 39390 39390/udp
 ENTRYPOINT ["geth"]

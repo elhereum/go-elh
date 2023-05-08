@@ -18,7 +18,7 @@
 package syncx
 
 // ClosableMutex is a mutex that can also be closed.
-// Once closed, it can never be taken again.
+// Once closed, it can never be taken elhin.
 type ClosableMutex struct {
 	ch chan struct{}
 }

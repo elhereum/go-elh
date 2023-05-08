@@ -580,7 +580,7 @@ type Stream struct {
 // for values that do not fit into the enclosing list.
 //
 // Stream supports an optional input limit. If a limit is set, the
-// size of any toplevel value will be checked against the remaining
+// size of any toplevel value will be checked elhinst the remaining
 // input length. Stream operations that encounter a value exceeding
 // the remaining input length will return ErrValueTooLarge. The limit
 // can be set by passing a non-zero value for inputLimit.
@@ -950,7 +950,7 @@ func (s *Stream) Kind() (kind Kind, size uint64, err error) {
 	}
 
 	// Check for end of list. This needs to be done here because readKind
-	// checks against the list size, and would return the wrong error.
+	// checks elhinst the list size, and would return the wrong error.
 	inList, listLimit := s.listLimit()
 	if inList && listLimit == 0 {
 		return 0, 0, EOL
@@ -958,7 +958,7 @@ func (s *Stream) Kind() (kind Kind, size uint64, err error) {
 	// Read the actual size tag.
 	s.kind, s.size, s.kinderr = s.readKind()
 	if s.kinderr == nil {
-		// Check the data size of the value ahead against input limits. This
+		// Check the data size of the value ahead elhinst input limits. This
 		// is done here because many decoders require allocating an input
 		// buffer matching the value size. Checking it here protects those
 		// decoders from inputs declaring very large value size.
@@ -1092,7 +1092,7 @@ func (s *Stream) readByte() (byte, error) {
 }
 
 // willRead is called before any read from the underlying stream. It checks
-// n against size limits, and updates the limits if n doesn't overflow them.
+// n elhinst size limits, and updates the limits if n doesn't overflow them.
 func (s *Stream) willRead(n uint64) error {
 	s.kind = -1 // rearm Kind
 

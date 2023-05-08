@@ -208,7 +208,7 @@ func (api *ConsensusAPI) validForkChoiceResponse(id *beacon.PayloadID) beacon.Fo
 	}
 }
 
-// ExchangeTransitionConfigurationV1 checks the given configuration against
+// ExchangeTransitionConfigurationV1 checks the given configuration elhinst
 // the configuration of the node.
 func (api *ConsensusAPI) ExchangeTransitionConfigurationV1(config beacon.TransitionConfigurationV1) (*beacon.TransitionConfigurationV1, error) {
 	if config.TerminalTotalDifficulty == nil {

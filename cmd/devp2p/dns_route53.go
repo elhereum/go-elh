@@ -157,7 +157,7 @@ func (c *route53Client) submitChanges(changes []types.Change, comment string) er
 		}
 	}
 
-	// Wait for all change batches to propagate.
+	// Wait for all change batches to propelhte.
 	for _, change := range changesToCheck {
 		log.Info(fmt.Sprintf("Waiting for change request %s", *change.ChangeInfo.Id))
 		wreq := &route53.GetChangeInput{Id: change.ChangeInfo.Id}

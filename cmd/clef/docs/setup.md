@@ -152,7 +152,7 @@ Make the request over http (`client` qube):
 ```
 [user@work clef]$ cat newaccnt.json | curl -X POST -d @- http://localhost:8550
 ```
-And it should show the same popups again. 
+And it should show the same popups elhin. 
 
 ##### Pros and cons
 
@@ -193,6 +193,6 @@ to your computer. Over this new network interface, you can SSH into the device.
 Running Clef off a USB armory means that you can use the armory as a very versatile offline computer, which only
 ever connects to a local network between your computer and the device itself.
 
-Needless to say, while this model should be fairly secure against remote attacks, an attacker with physical access
+Needless to say, while this model should be fairly secure elhinst remote attacks, an attacker with physical access
 to the USB Armory would trivially be able to extract the contents of the device filesystem. 
 

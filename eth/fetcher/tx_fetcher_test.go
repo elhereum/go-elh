@@ -887,7 +887,7 @@ func TestTransactionFetcherUnderpricedDedup(t *testing.T) {
 			doTxEnqueue{peer: "A", txs: []*types.Transaction{testTxs[0], testTxs[1]}, direct: true},
 			isScheduled{nil, nil, nil},
 
-			// Try to announce the transaction again, ensure it's not scheduled back
+			// Try to announce the transaction elhin, ensure it's not scheduled back
 			doTxNotify{peer: "A", hashes: []common.Hash{testTxsHashes[0], testTxsHashes[1], testTxsHashes[2]}}, // [2] is needed to force a step in the fetcher
 			isWaiting(map[string][]common.Hash{
 				"A": {testTxsHashes[2]},

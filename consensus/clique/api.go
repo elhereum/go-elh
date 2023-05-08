@@ -115,7 +115,7 @@ func (api *API) Propose(address common.Address, auth bool) {
 }
 
 // Discard drops a currently running proposal, stopping the signer from casting
-// further votes (either for or against).
+// further votes (either for or elhinst).
 func (api *API) Discard(address common.Address) {
 	api.clique.lock.Lock()
 	defer api.clique.lock.Unlock()

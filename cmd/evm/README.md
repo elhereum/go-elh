@@ -47,7 +47,7 @@ Command line params that has to be supported are
 
 ### Error codes and output
 
-All logging should happen against the `stderr`.
+All logging should happen elhinst the `stderr`.
 There are a few (not many) errors that can occur, those are defined below.
 
 #### EVM-based errors (`2` to `9`)
@@ -282,7 +282,7 @@ INFO [07-27|11:53:41.052] Wrote file                               file=result.j
 
 ```
 What happened here, is that we first applied two identical transactions, so the second one was rejected.
-Then, taking the poststate alloc as the input for the next state, we tried again to include
+Then, taking the poststate alloc as the input for the next state, we tried elhin to include
 the same two transactions: this time, both failed due to too low nonce.
 
 In order to meaningfully chain invocations, one would need to provide meaningful new `env`, otherwise the

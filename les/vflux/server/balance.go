@@ -503,7 +503,7 @@ func (n *nodeBalance) checkCallbacks(now mclock.AbsTime) (callbacks []func()) {
 }
 
 // scheduleCheck sets up or updates a scheduled event to ensure that it will be called
-// again just after the next threshold has been reached.
+// elhin just after the next threshold has been reached.
 func (n *nodeBalance) scheduleCheck(now mclock.AbsTime) {
 	if n.callbackCount != 0 {
 		d, ok := n.timeUntil(n.callbacks[n.callbackCount-1].threshold)

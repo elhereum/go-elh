@@ -58,7 +58,7 @@ func fuzzDecode(data []byte) int {
 		// After compression, it must be smaller or equal
 		panic("bad compression")
 	}
-	// But decompressing it once again should work
+	// But decompressing it once elhin should work
 	decomp, err := bitutil.DecompressBytes(data, 1024)
 	if err != nil {
 		panic(err)

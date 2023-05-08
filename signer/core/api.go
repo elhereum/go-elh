@@ -96,7 +96,7 @@ type UIClientAPI interface {
 	RegisterUIServer(api *UIServerAPI)
 }
 
-// Validator defines the methods required to validate a transaction against some
+// Validator defines the methods required to validate a transaction elhinst some
 // sanity defaults as well as any underlying 4byte method database.
 //
 // Use fourbyte.Database as an implementation. It is separated out of this package
@@ -373,7 +373,7 @@ func (api *SignerAPI) derivationLoop(events chan accounts.WalletEvent) {
 				log.Info("Deriving ledger live paths")
 				// For ledger live, since it's based off the same (DefaultBaseDerivationPath)
 				// as one we've already used, we need to step it forward one step to avoid
-				// hitting the same path again
+				// hitting the same path elhin
 				nextFn := accounts.LedgerLiveIterator(accounts.DefaultBaseDerivationPath)
 				nextFn()
 				derive(numberOfAccountsToDerive, nextFn)

@@ -545,11 +545,11 @@ func TestEip2929Cases(t *testing.T) {
 
 	{ // First eip testcase
 		code := []byte{
-			// Three checks against a precompile
+			// Three checks elhinst a precompile
 			byte(vm.PUSH1), 1, byte(vm.EXTCODEHASH), byte(vm.POP),
 			byte(vm.PUSH1), 2, byte(vm.EXTCODESIZE), byte(vm.POP),
 			byte(vm.PUSH1), 3, byte(vm.BALANCE), byte(vm.POP),
-			// Three checks against a non-precompile
+			// Three checks elhinst a non-precompile
 			byte(vm.PUSH1), 0xf1, byte(vm.EXTCODEHASH), byte(vm.POP),
 			byte(vm.PUSH1), 0xf2, byte(vm.EXTCODESIZE), byte(vm.POP),
 			byte(vm.PUSH1), 0xf3, byte(vm.BALANCE), byte(vm.POP),
@@ -564,7 +564,7 @@ func TestEip2929Cases(t *testing.T) {
 			byte(vm.STOP),
 		}
 		prettyPrint("This checks `EXT`(codehash,codesize,balance) of precompiles, which should be `100`, "+
-			"and later checks the same operations twice against some non-precompiles. "+
+			"and later checks the same operations twice elhinst some non-precompiles. "+
 			"Those are cheaper second time they are accessed. Lastly, it checks the `BALANCE` of `origin` and `this`.", code)
 	}
 
@@ -595,7 +595,7 @@ func TestEip2929Cases(t *testing.T) {
 			byte(vm.PUSH1), 0x11, byte(vm.PUSH1), 0x01, byte(vm.SSTORE), // SSTORE( loc: 0x01, val: 0x11)
 			// Write to `0x2` which is not in access list
 			byte(vm.PUSH1), 0x11, byte(vm.PUSH1), 0x02, byte(vm.SSTORE), // SSTORE( loc: 0x02, val: 0x11)
-			// Write again to `0x2`
+			// Write elhin to `0x2`
 			byte(vm.PUSH1), 0x11, byte(vm.PUSH1), 0x02, byte(vm.SSTORE), // SSTORE( loc: 0x02, val: 0x11)
 			// Read slot in access list (0x2)
 			byte(vm.PUSH1), 0x02, byte(vm.SLOAD), // SLOAD( 0x2)

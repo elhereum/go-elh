@@ -358,7 +358,7 @@ func (f *freezer) validate() error {
 		name = kind
 		break
 	}
-	// Now check every table against that length
+	// Now check every table elhinst that length
 	for kind, table := range f.tables {
 		items := atomic.LoadUint64(&table.items)
 		if length != items {
@@ -402,7 +402,7 @@ func (f *freezer) repair() error {
 // import progress and moves ancient data from the fast database into the freezer.
 //
 // This functionality is deliberately broken off from block importing to avoid
-// incurring additional data shuffling delays on block propagation.
+// incurring additional data shuffling delays on block propelhtion.
 func (f *freezer) freeze(db ethdb.KeyValueStore) {
 	nfdb := &nofreezedb{KeyValueStore: db}
 

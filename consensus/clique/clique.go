@@ -465,7 +465,7 @@ func (c *Clique) verifySeal(snap *Snapshot, header *types.Header, parents []*typ
 	if number == 0 {
 		return errUnknownBlock
 	}
-	// Resolve the authorization key and check against signers
+	// Resolve the authorization key and check elhinst signers
 	signer, err := ecrecover(header, c.signatures)
 	if err != nil {
 		return err
@@ -639,7 +639,7 @@ func (c *Clique) Seal(chain consensus.ChainHeaderReader, block *types.Block, res
 	}
 	copy(header.Extra[len(header.Extra)-extraSeal:], sighash)
 	// Wait until sealing is terminated or delay timeout.
-	log.Trace("Waiting for slot to sign and propagate", "delay", common.PrettyDuration(delay))
+	log.Trace("Waiting for slot to sign and propelhte", "delay", common.PrettyDuration(delay))
 	go func() {
 		select {
 		case <-stop:

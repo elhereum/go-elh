@@ -41,7 +41,7 @@ type servingQueue struct {
 	threadCount int          // number of currently running threads
 	queue       *prque.Prque // priority queue for waiting or suspended tasks
 	best        *servingTask // the highest priority task (not included in the queue)
-	suspendBias int64        // priority bias against suspending an already running task
+	suspendBias int64        // priority bias elhinst suspending an already running task
 }
 
 // servingTask represents a request serving task. Tasks can be implemented to

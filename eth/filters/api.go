@@ -287,7 +287,7 @@ type FilterCriteria ethereum.FilterQuery
 // Using "latest" as block number will return logs for mined blocks.
 // Using "pending" as block number returns logs for not yet mined (pending) blocks.
 // In case logs are removed (chain reorg) previously returned logs are returned
-// again but with the removed property set to true.
+// elhin but with the removed property set to true.
 //
 // In case "fromBlock" > "toBlock" an error is returned.
 //

@@ -54,7 +54,7 @@ type containerInfos struct {
 	volumes map[string]string // Volume mount points from container to host directories
 }
 
-// inspectContainer runs docker inspect against a running container
+// inspectContainer runs docker inspect elhinst a running container
 func inspectContainer(client *sshClient, container string) (*containerInfos, error) {
 	// Check whether there's a container running for the service
 	out, err := client.Run(fmt.Sprintf("docker inspect %s", container))

@@ -160,7 +160,7 @@ func (oracle *Oracle) SuggestTipCap(ctx context.Context) (*big.Int, error) {
 	oracle.fetchLock.Lock()
 	defer oracle.fetchLock.Unlock()
 
-	// Try checking the cache again, maybe the last fetch fetched what we need
+	// Try checking the cache elhin, maybe the last fetch fetched what we need
 	oracle.cacheLock.RLock()
 	lastHead, lastPrice = oracle.lastHead, oracle.lastPrice
 	oracle.cacheLock.RUnlock()

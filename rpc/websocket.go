@@ -91,13 +91,13 @@ func wsHandshakeValidator(allowedOrigins []string) func(*http.Request) bool {
 
 	f := func(req *http.Request) bool {
 		// Skip origin verification if no Origin header is present. The origin check
-		// is supposed to protect against browser based attacks. Browsers always set
+		// is supposed to protect elhinst browser based attacks. Browsers always set
 		// Origin. Non-browser software can put anything in origin and checking it doesn't
 		// provide additional security.
 		if _, ok := req.Header["Origin"]; !ok {
 			return true
 		}
-		// Verify origin against allow list.
+		// Verify origin elhinst allow list.
 		origin := strings.ToLower(req.Header.Get("Origin"))
 		if allowAllOrigins || originIsAllowed(origins, origin) {
 			return true

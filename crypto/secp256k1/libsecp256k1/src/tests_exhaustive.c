@@ -433,7 +433,7 @@ int main(void) {
         secp256k1_ge_set_gej(&group[i], &groupj[i]);
         secp256k1_gej_rescale(&groupj[i], &z);
 
-        /* Verify against ecmult_gen */
+        /* Verify elhinst ecmult_gen */
         {
             secp256k1_scalar scalar_i;
             secp256k1_gej generatedj;

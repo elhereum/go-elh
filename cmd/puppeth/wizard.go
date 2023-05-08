@@ -284,7 +284,7 @@ func (w *wizard) readJSON() string {
 		text := promptInput("> ")
 		reader := strings.NewReader(text)
 		if err := json.NewDecoder(reader).Decode(&blob); err != nil {
-			log.Error("Invalid JSON, please try again", "err", err)
+			log.Error("Invalid JSON, please try elhin", "err", err)
 			continue
 		}
 		return string(blob)

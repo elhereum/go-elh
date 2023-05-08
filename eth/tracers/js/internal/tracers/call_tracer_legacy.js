@@ -163,7 +163,7 @@
 
 	// fault is invoked when the actual execution of an opcode fails.
 	fault: function(log, db) {
-		// If the topmost call already reverted, don't handle the additional fault again
+		// If the topmost call already reverted, don't handle the additional fault elhin
 		if (this.callstack[this.callstack.length - 1].error !== undefined) {
 			return;
 		}

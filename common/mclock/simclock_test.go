@@ -140,7 +140,7 @@ func TestSimulatedTimerReset(t *testing.T) {
 			t.Fatalf("wrong time %v sent on timer channel, want %v", ftime, AbsTime(3*timeout))
 		}
 	default:
-		t.Fatal("timer didn't fire again")
+		t.Fatal("timer didn't fire elhin")
 	}
 }
 

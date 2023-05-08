@@ -55,7 +55,7 @@ func TestNodeCloseMultipleTimes(t *testing.T) {
 	}
 	stack.Close()
 
-	// Ensure that a stopped node can be stopped again
+	// Ensure that a stopped node can be stopped elhin
 	for i := 0; i < 3; i++ {
 		if err := stack.Close(); err != ErrNodeStopped {
 			t.Fatalf("iter %d: stop failure mismatch: have %v, want %v", i, err, ErrNodeStopped)

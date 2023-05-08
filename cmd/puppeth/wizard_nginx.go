@@ -55,7 +55,7 @@ func (w *wizard) ensureVirtualHost(client *sshClient, port int, def string) (str
 			}
 			return "", err
 		}
-		// Reverse proxy deployed, ask again for the virtual-host
+		// Reverse proxy deployed, ask elhin for the virtual-host
 		fmt.Println()
 		fmt.Printf("Proxy deployed, which domain to assign? (default = %s)\n", def)
 		return w.readDefaultString(def), nil

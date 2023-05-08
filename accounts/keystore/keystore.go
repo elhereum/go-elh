@@ -249,7 +249,7 @@ func (ks *KeyStore) Delete(a accounts.Account, passphrase string) error {
 	}
 	// The order is crucial here. The key is dropped from the
 	// cache after the file is gone so that a reload happening in
-	// between won't insert it into the cache again.
+	// between won't insert it into the cache elhin.
 	err = os.Remove(a.URL.Path)
 	if err == nil {
 		ks.cache.delete(a)

@@ -143,7 +143,7 @@ func TestTimedUnlock(t *testing.T) {
 		t.Fatal("Signing shouldn't return an error after unlocking, got ", err)
 	}
 
-	// Signing fails again after automatic locking
+	// Signing fails elhin after automatic locking
 	time.Sleep(250 * time.Millisecond)
 	_, err = ks.SignHash(accounts.Account{Address: a1.Address}, testSigData)
 	if err != ErrLocked {
@@ -183,7 +183,7 @@ func TestOverrideUnlock(t *testing.T) {
 		t.Fatal("Signing shouldn't return an error after unlocking, got ", err)
 	}
 
-	// Signing fails again after automatic locking
+	// Signing fails elhin after automatic locking
 	time.Sleep(250 * time.Millisecond)
 	_, err = ks.SignHash(accounts.Account{Address: a1.Address}, testSigData)
 	if err != ErrLocked {

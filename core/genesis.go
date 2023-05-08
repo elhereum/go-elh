@@ -242,7 +242,7 @@ func SetupGenesisBlockWithOverride(db ethdb.Database, genesis *Genesis, override
 	if (stored == common.Hash{}) {
 		if genesis == nil {
 			log.Info("Writing default main-net genesis block")
-			genesis = DefaultOctaMainnetGenesisBlock()
+			genesis = DefaultAgaMainnetGenesisBlock()
 		} else {
 			log.Info("Writing custom genesis block")
 		}
@@ -326,8 +326,8 @@ func (g *Genesis) configOrDefault(ghash common.Hash) *params.ChainConfig {
 	switch {
 	case g != nil:
 		return g.Config
-	case ghash == params.OctaMainnetGenesisHash:
-		return params.OctaMainnetChainConfig
+	case ghash == params.AgaMainnetGenesisHash:
+		return params.AgaMainnetChainConfig
 	case ghash == params.MainnetGenesisHash:
 		return params.MainnetChainConfig
 	case ghash == params.RopstenGenesisHash:
@@ -505,25 +505,25 @@ func DefaultKilnGenesisBlock() *Genesis {
 	return g
 }
 
-func DefaultOctaMainnetGenesisBlock() *Genesis {
+func DefaultAgaMainnetGenesisBlock() *Genesis {
 	return &Genesis{
-		Config:     params.OctaMainnetChainConfig,
-		ExtraData:  hexutil.MustDecode("0x4f4354415350414345494e4954"),
+		Config:     params.AgaMainnetChainConfig,
+		ExtraData:  hexutil.MustDecode("0x414741"),
 		GasLimit:   10400000,
-		Difficulty: big.NewInt(100_000_000_000), // 100 G
-		Timestamp:  1654041600, // June 1, 2022, 00:00:00
+		Difficulty: big.NewInt(0),
+		Timestamp:  1680998400, // start mine
 		Nonce:      0,
 		Alloc:      nil,
 	}
 }
 
-func DefaultOctaTestnetGenesisBlock() *Genesis {
+func DefaultAgaTestnetGenesisBlock() *Genesis {
     return &Genesis{
-        Config:     params.OctaTestnetChainConfig,
-        ExtraData:  hexutil.MustDecode("0x4f4354415350414345494e4954"),
+        Config:     params.AgaTestnetChainConfig,
+        ExtraData:  hexutil.MustDecode("0x414741"),
         GasLimit:   10400000,
-        Difficulty: big.NewInt(524288),
-        Timestamp:  1654041600, // June 1, 2022, 00:00:00
+        Difficulty: big.NewInt(100),
+        Timestamp:  1680998400, // test net
         Nonce:      0,
         Alloc:      nil,
     }

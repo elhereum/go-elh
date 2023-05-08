@@ -25,7 +25,7 @@ import (
 )
 
 func TestReadBufferReset(t *testing.T) {
-	reader := bytes.NewReader(hexutil.MustDecode("0x010202030303040505"))
+	reader := bytes.NewReader(hexutil.MustDecode("0x010202030404040505"))
 	var b readBuffer
 
 	s1, _ := b.read(reader, 1)

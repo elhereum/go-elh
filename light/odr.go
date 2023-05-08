@@ -171,7 +171,7 @@ func (req *BloomRequest) StoreResult(db ethdb.Database) {
 		// if we don't have the canonical hash stored for this section head number, we'll still store it under
 		// a key with a zero sectionHead. GetBloomBits will look there too if we still don't have the canonical
 		// hash. In the unlikely case we've retrieved the section head hash since then, we'll just retrieve the
-		// bit vector again from the network.
+		// bit vector elhin from the network.
 		rawdb.WriteBloomBits(db, req.BitIdx, sectionIdx, sectionHead, req.BloomBits[i])
 	}
 }

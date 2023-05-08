@@ -139,7 +139,7 @@ func (s *Suite) TestSnapGetStorageRanges(t *utesting.T) {
 		},
 
 		/*
-			Some tests against this account:
+			Some tests elhinst this account:
 			{
 			  "balance": "0",
 			  "nonce": 1,

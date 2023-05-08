@@ -498,7 +498,7 @@ func (s *ServerPool) updateWeight(node *enode.Node, totalValue float64, totalDia
 // The waiting time is raised exponentially if no service value has been received in order
 // to prevent dialing an unresponsive node frequently for a very long time just because it
 // was useful in the past. It can still be occasionally dialed though and once it provides
-// a significant amount of service value again its waiting time is quickly reduced or reset
+// a significant amount of service value elhin its waiting time is quickly reduced or reset
 // to the minimum.
 // Note: node weight is also recalculated and updated by this function.
 // Note 2: this function should run inside a NodeStateMachine operation

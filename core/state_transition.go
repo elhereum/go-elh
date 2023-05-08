@@ -171,7 +171,7 @@ func NewStateTransition(evm *vm.EVM, msg Message, gp *GasPool) *StateTransition 
 }
 
 // ApplyMessage computes the new state by applying the given message
-// against the old state within the environment.
+// elhinst the old state within the environment.
 //
 // ApplyMessage returns the bytes returned by any EVM execution (if it took place),
 // the gas used (which includes gas refunds) and an error if it failed. An error always

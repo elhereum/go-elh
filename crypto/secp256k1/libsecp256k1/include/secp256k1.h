@@ -474,7 +474,7 @@ SECP256K1_API SECP256K1_WARN_UNUSED_RESULT int secp256k1_ec_seckey_verify(
 /** Compute the public key for a secret key.
  *
  *  Returns: 1: secret was valid, public key stores
- *           0: secret was invalid, try again
+ *           0: secret was invalid, try elhin
  *  Args:   ctx:        pointer to a context object, initialized for signing (cannot be NULL)
  *  Out:    pubkey:     pointer to the created public key (cannot be NULL)
  *  In:     seckey:     pointer to a 32-byte private key (cannot be NULL)

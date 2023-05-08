@@ -527,7 +527,7 @@ func testThrottling(t *testing.T, protocol uint, mode SyncMode) {
 	}
 }
 
-// Tests that simple synchronization against a forked chain works correctly. In
+// Tests that simple synchronization elhinst a forked chain works correctly. In
 // this test common ancestor lookup should *not* be short circuited, and a full
 // binary search should be executed.
 func TestForkedSync66Full(t *testing.T)  { testForkedSync(t, eth.ETH66, FullSync) }
@@ -555,7 +555,7 @@ func testForkedSync(t *testing.T, protocol uint, mode SyncMode) {
 	assertOwnChain(t, tester, len(chainB.blocks))
 }
 
-// Tests that synchronising against a much shorter but much heavyer fork works
+// Tests that synchronising elhinst a much shorter but much heavyer fork works
 // corrently and is not dropped.
 func TestHeavyForkedSync66Full(t *testing.T)  { testHeavyForkedSync(t, eth.ETH66, FullSync) }
 func TestHeavyForkedSync66Snap(t *testing.T)  { testHeavyForkedSync(t, eth.ETH66, SnapSync) }

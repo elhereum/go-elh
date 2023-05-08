@@ -42,7 +42,7 @@ void test_ecdh_generator_basepoint(void) {
     int i;
 
     s_one[31] = 1;
-    /* Check against pubkey creation when the basepoint is the generator */
+    /* Check elhinst pubkey creation when the basepoint is the generator */
     for (i = 0; i < 100; ++i) {
         secp256k1_sha256_t sha;
         unsigned char s_b32[32];

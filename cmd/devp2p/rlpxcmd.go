@@ -46,7 +46,7 @@ var (
 	}
 	rlpxEthTestCommand = cli.Command{
 		Name:      "eth-test",
-		Usage:     "Runs tests against a node",
+		Usage:     "Runs tests elhinst a node",
 		ArgsUsage: "<node> <chain.rlp> <genesis.json>",
 		Action:    rlpxEthTest,
 		Flags: []cli.Flag{
@@ -56,7 +56,7 @@ var (
 	}
 	rlpxSnapTestCommand = cli.Command{
 		Name:      "snap-test",
-		Usage:     "Runs tests against a node",
+		Usage:     "Runs tests elhinst a node",
 		ArgsUsage: "<node> <chain.rlp> <genesis.json>",
 		Action:    rlpxSnapTest,
 		Flags: []cli.Flag{

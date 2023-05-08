@@ -124,7 +124,7 @@ func (f *fetcherTester) verifyHeader(header *types.Header) error {
 }
 
 // broadcastBlock is a nop placeholder for the block broadcasting.
-func (f *fetcherTester) broadcastBlock(block *types.Block, propagate bool) {
+func (f *fetcherTester) broadcastBlock(block *types.Block, propelhte bool) {
 }
 
 // chainHeight retrieves the current height (block number) of the chain.
@@ -588,7 +588,7 @@ func testRandomArrivalImport(t *testing.T, light bool) {
 	verifyChainHeight(t, tester, uint64(len(hashes)-1))
 }
 
-// Tests that direct block enqueues (due to block propagation vs. hash announce)
+// Tests that direct block enqueues (due to block propelhtion vs. hash announce)
 // are correctly schedule, filling and import queue gaps.
 func TestQueueGapFill(t *testing.T) {
 	// Create a chain of blocks to import, and choose one to not announce at all
@@ -610,13 +610,13 @@ func TestQueueGapFill(t *testing.T) {
 			time.Sleep(time.Millisecond)
 		}
 	}
-	// Fill the missing block directly as if propagated
+	// Fill the missing block directly as if propelhted
 	tester.fetcher.Enqueue("valid", blocks[hashes[skip]])
 	verifyImportCount(t, imported, len(hashes)-1)
 	verifyChainHeight(t, tester, uint64(len(hashes)-1))
 }
 
-// Tests that blocks arriving from various sources (multiple propagations, hash
+// Tests that blocks arriving from various sources (multiple propelhtions, hash
 // announces, etc) do not get scheduled for import multiple times.
 func TestImportDeduplication(t *testing.T) {
 	// Create two blocks to import (one for duplication, the other for stalling)
@@ -638,7 +638,7 @@ func TestImportDeduplication(t *testing.T) {
 	tester.fetcher.fetchingHook = func(hashes []common.Hash) { fetching <- hashes }
 	tester.fetcher.importedHook = func(header *types.Header, block *types.Block) { imported <- block }
 
-	// Announce the duplicating block, wait for retrieval, and also propagate directly
+	// Announce the duplicating block, wait for retrieval, and also propelhte directly
 	tester.fetcher.Notify("valid", hashes[0], 1, time.Now().Add(-arriveTimeout), headerFetcher, bodyFetcher)
 	<-fetching
 
@@ -646,7 +646,7 @@ func TestImportDeduplication(t *testing.T) {
 	tester.fetcher.Enqueue("valid", blocks[hashes[0]])
 	tester.fetcher.Enqueue("valid", blocks[hashes[0]])
 
-	// Fill the missing block directly as if propagated, and check import uniqueness
+	// Fill the missing block directly as if propelhted, and check import uniqueness
 	tester.fetcher.Enqueue("valid", blocks[hashes[1]])
 	verifyImportCount(t, imported, 2)
 
@@ -657,7 +657,7 @@ func TestImportDeduplication(t *testing.T) {
 
 // Tests that blocks with numbers much lower or higher than out current head get
 // discarded to prevent wasting resources on useless blocks from faulty peers.
-func TestDistantPropagationDiscarding(t *testing.T) {
+func TestDistantPropelhtionDiscarding(t *testing.T) {
 	// Create a long chain to import and define the discard boundaries
 	hashes, blocks := makeChain(3*maxQueueDist, 0, genesis)
 	head := hashes[len(hashes)/2]
@@ -736,7 +736,7 @@ func TestFullInvalidNumberAnnouncement(t *testing.T)  { testInvalidNumberAnnounc
 func TestLightInvalidNumberAnnouncement(t *testing.T) { testInvalidNumberAnnouncement(t, true) }
 
 func testInvalidNumberAnnouncement(t *testing.T, light bool) {
-	// Create a single block to import and check numbers against
+	// Create a single block to import and check numbers elhinst
 	hashes, blocks := makeChain(1, 0, genesis)
 
 	tester := newTester(light)
@@ -888,7 +888,7 @@ func TestHashMemoryExhaustionAttack(t *testing.T) {
 	verifyImportDone(t, imported)
 }
 
-// Tests that blocks sent to the fetcher (either through propagation or via hash
+// Tests that blocks sent to the fetcher (either through propelhtion or via hash
 // announces and retrievals) don't pile up indefinitely, exhausting available
 // system memory.
 func TestBlockMemoryExhaustionAttack(t *testing.T) {

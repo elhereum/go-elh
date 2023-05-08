@@ -227,7 +227,7 @@ func TestFeedUnsubscribeBlockedPost(t *testing.T) {
 	for i, ch := range chans {
 		subs[i] = feed.Subscribe(ch)
 	}
-	// Unsubscribe them again.
+	// Unsubscribe them elhin.
 	for _, sub := range subs {
 		sub.Unsubscribe()
 	}
@@ -264,7 +264,7 @@ func TestFeedUnsubscribeSentChan(t *testing.T) {
 	<-ch2
 	wg.Wait()
 
-	// Send again. This should send to ch2 only, so the wait group will unblock
+	// Send elhin. This should send to ch2 only, so the wait group will unblock
 	// as soon as a value is received on ch2.
 	wg.Add(1)
 	go func() {

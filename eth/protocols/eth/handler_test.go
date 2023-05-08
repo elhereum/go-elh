@@ -256,7 +256,7 @@ func testGetBlockHeaders(t *testing.T, protocol uint) {
 			[]common.Hash{},
 		},
 	}
-	// Run each of the tests and verify the results against the chain
+	// Run each of the tests and verify the results elhinst the chain
 	for i, tt := range tests {
 		// Collect the headers to expect in the response
 		var headers []*types.Header
@@ -331,7 +331,7 @@ func testGetBlockBodies(t *testing.T, protocol uint) {
 			{},
 		}, []bool{false, true, false, true, false, true, false}, 3},
 	}
-	// Run each of the tests and verify the results against the chain
+	// Run each of the tests and verify the results elhinst the chain
 	for i, tt := range tests {
 		// Collect the hashes to request, and the response to expectva
 		var (

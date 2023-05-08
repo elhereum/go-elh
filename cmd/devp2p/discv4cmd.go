@@ -78,7 +78,7 @@ var (
 	}
 	discv4TestCommand = cli.Command{
 		Name:   "test",
-		Usage:  "Runs tests against a node",
+		Usage:  "Runs tests elhinst a node",
 		Action: discv4Test,
 		Flags: []cli.Flag{
 			remoteEnodeFlag,

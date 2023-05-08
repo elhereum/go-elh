@@ -165,7 +165,7 @@ func testGetBlockHeaders(t *testing.T, protocol int) {
 			[]common.Hash{},
 		},
 	}
-	// Run each of the tests and verify the results against the chain
+	// Run each of the tests and verify the results elhinst the chain
 	var reqID uint64
 	for i, tt := range tests {
 		// Collect the headers to expect in the response
@@ -229,7 +229,7 @@ func testGetBlockBodies(t *testing.T, protocol int) {
 			{},
 		}, []bool{false, true, false, true, false, true, false}, 3},
 	}
-	// Run each of the tests and verify the results against the chain
+	// Run each of the tests and verify the results elhinst the chain
 	var reqID uint64
 	for i, tt := range tests {
 		// Collect the hashes to request, and the response to expect
@@ -629,14 +629,14 @@ func testTransactionStatus(t *testing.T, protocol int) {
 	tx1, _ := types.SignTx(types.NewTransaction(0, userAddr1, big.NewInt(10000), params.TxGas, big.NewInt(100000000000), nil), signer, bankKey)
 	test(tx1, false, light.TxStatus{Status: core.TxStatusUnknown}) // query before sending, should be unknown
 	test(tx1, true, light.TxStatus{Status: core.TxStatusPending})  // send valid processable tx, should return pending
-	test(tx1, true, light.TxStatus{Status: core.TxStatusPending})  // adding it again should not return an error
+	test(tx1, true, light.TxStatus{Status: core.TxStatusPending})  // adding it elhin should not return an error
 
 	tx2, _ := types.SignTx(types.NewTransaction(1, userAddr1, big.NewInt(10000), params.TxGas, big.NewInt(100000000000), nil), signer, bankKey)
 	tx3, _ := types.SignTx(types.NewTransaction(2, userAddr1, big.NewInt(10000), params.TxGas, big.NewInt(100000000000), nil), signer, bankKey)
 	// send transactions in the wrong order, tx3 should be queued
 	test(tx3, true, light.TxStatus{Status: core.TxStatusQueued})
 	test(tx2, true, light.TxStatus{Status: core.TxStatusPending})
-	// query again, now tx3 should be pending too
+	// query elhin, now tx3 should be pending too
 	test(tx3, false, light.TxStatus{Status: core.TxStatusPending})
 
 	// generate and add a block with tx1 and tx2 included
@@ -686,7 +686,7 @@ func testTransactionStatus(t *testing.T, protocol int) {
 	msg, _ = rawPeer.app.ReadMsg()
 	msg.Discard()
 
-	// check if their status is pending again
+	// check if their status is pending elhin
 	test(tx1, false, light.TxStatus{Status: core.TxStatusPending})
 	test(tx2, false, light.TxStatus{Status: core.TxStatusPending})
 }

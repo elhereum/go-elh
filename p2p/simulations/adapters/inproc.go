@@ -241,7 +241,7 @@ func (sn *SimNode) Snapshots() (map[string][]byte, error) {
 // Start registers the services and starts the underlying devp2p node
 func (sn *SimNode) Start(snapshots map[string][]byte) error {
 	// ensure we only register the services once in the case of the node
-	// being stopped and then started again
+	// being stopped and then started elhin
 	var regErr error
 	sn.registerOnce.Do(func() {
 		for _, name := range sn.config.Lifecycles {
@@ -258,7 +258,7 @@ func (sn *SimNode) Start(snapshots map[string][]byte) error {
 				regErr = err
 				break
 			}
-			// if the service has already been registered, don't register it again.
+			// if the service has already been registered, don't register it elhin.
 			if _, ok := sn.running[name]; ok {
 				continue
 			}

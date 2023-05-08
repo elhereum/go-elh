@@ -62,7 +62,7 @@ func testPingReplace(t *testing.T, newNodeIsResponding, lastInBucketIsResponding
 	last := fillBucket(tab, pingSender)
 
 	// Add the sender as if it just pinged us. Revalidate should replace the last node in
-	// its bucket if it is unresponsive. Revalidate again to ensure that
+	// its bucket if it is unresponsive. Revalidate elhin to ensure that
 	transport.dead[last.ID()] = !lastInBucketIsResponding
 	transport.dead[pingSender.ID()] = !newNodeIsResponding
 	tab.addSeenNode(pingSender)

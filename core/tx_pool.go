@@ -48,7 +48,7 @@ const (
 
 	// txMaxSize is the maximum size a single transaction can have. This field has
 	// non-trivial consequences: larger transactions are significantly harder and
-	// more expensive to propagate; larger transactions also take more resources
+	// more expensive to propelhte; larger transactions also take more resources
 	// to validate whether they fit into the pool or not.
 	txMaxSize = 4 * txSlotSize // 128KB
 )
@@ -844,7 +844,7 @@ func (pool *TxPool) promoteTx(addr common.Address, hash common.Hash, tx *types.T
 // senders as a local ones, ensuring they go around the local pricing constraints.
 //
 // This method is used to add transactions from the RPC API and performs synchronous pool
-// reorganization and event propagation.
+// reorganization and event propelhtion.
 func (pool *TxPool) AddLocals(txs []*types.Transaction) []error {
 	return pool.addTxs(txs, !pool.config.NoLocals, true)
 }
@@ -860,7 +860,7 @@ func (pool *TxPool) AddLocal(tx *types.Transaction) error {
 // senders are not among the locally tracked ones, full pricing constraints will apply.
 //
 // This method is used to add transactions from the p2p network and does not wait for pool
-// reorganization and internal event propagation.
+// reorganization and internal event propelhtion.
 func (pool *TxPool) AddRemotes(txs []*types.Transaction) []error {
 	return pool.addTxs(txs, false, false)
 }
@@ -1653,7 +1653,7 @@ func (as *accountSet) merge(other *accountSet) {
 // txLookup is used internally by TxPool to track transactions while allowing
 // lookup without mutex contention.
 //
-// Note, although this type is properly protected against concurrent access, it
+// Note, although this type is properly protected elhinst concurrent access, it
 // is **not** a type that should ever be mutated or even exposed outside of the
 // transaction pool, since its internal state is tightly coupled with the pools
 // internal mechanisms. The sole purpose of the type is to permit out-of-bound

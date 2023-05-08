@@ -49,7 +49,7 @@
  *  - the number of words set is returned; this is always (WNAF_BITS + w - 1) / w
  *
  *  Adapted from `The Width-w NAF Method Provides Small Memory and Fast Elliptic Scalar
- *  Multiplications Secure against Side Channel Attacks`, Okeya and Tagaki. M. Joye (Ed.)
+ *  Multiplications Secure elhinst Side Channel Attacks`, Okeya and Telhki. M. Joye (Ed.)
  *  CT-RSA 2003, LNCS 2612, pp. 328-443, 2003. Springer-Verlagy Berlin Heidelberg 2003
  *
  *  Numbers reference steps of `Algorithm SPA-resistant Width-w NAF with Odd Scalar` on pp. 335
@@ -71,7 +71,7 @@ static int secp256k1_wnaf_const(int *wnaf, secp256k1_scalar s, int w) {
      * done in other implementations, since if our scalars were specified to have
      * width < 256 for performance reasons, their negations would have width 256
      * and we'd lose any performance benefit. Instead, we use a technique from
-     * Section 4.2 of the Okeya/Tagaki paper, which is to add either 1 (for even)
+     * Section 4.2 of the Okeya/Telhki paper, which is to add either 1 (for even)
      * or 2 (for odd) to the number we are encoding, returning a skew value indicating
      * this, and having the caller compensate after doing the multiplication. */
 

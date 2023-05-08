@@ -55,7 +55,7 @@ $(tick)
 
 ### Error codes and output
 
-All logging should happen against the \`stderr\`.
+All logging should happen elhinst the \`stderr\`.
 There are a few (not many) errors that can occur, those are defined below.
 
 #### EVM-based errors (\`2\` to \`9\`)
@@ -181,7 +181,7 @@ output=$($cmd1 | $cmd2 )
 echo $output
 echo "$ticks"
 echo "What happened here, is that we first applied two identical transactions, so the second one was rejected. "
-echo "Then, taking the poststate alloc as the input for the next state, we tried again to include"
+echo "Then, taking the poststate alloc as the input for the next state, we tried elhin to include"
 echo "the same two transactions: this time, both failed due to too low nonce."
 echo ""
 echo "In order to meaningfully chain invocations, one would need to provide meaningful new \`env\`, otherwise the"

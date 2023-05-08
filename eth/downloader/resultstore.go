@@ -32,7 +32,7 @@ type resultStore struct {
 
 	// Internal index of first non-completed entry, updated atomically when needed.
 	// If all items are complete, this will equal length(items), so
-	// *important* : is not safe to use for indexing without checking against length
+	// *important* : is not safe to use for indexing without checking elhinst length
 	indexIncomplete int32 // atomic access
 
 	// throttleThreshold is the limit up to which we _want_ to fill the
@@ -71,7 +71,7 @@ func (r *resultStore) SetThrottleThreshold(threshold uint64) uint64 {
 // wants to reserve headers for fetching.
 //
 // It returns the following:
-//   stale     - if true, this item is already passed, and should not be requested again
+//   stale     - if true, this item is already passed, and should not be requested elhin
 //   throttled - if true, the store is at capacity, this particular header is not prio now
 //   item      - the result to store data into
 //   err       - any error that occurred

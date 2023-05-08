@@ -38,7 +38,7 @@ func (w *wizard) deployFaucet() {
 	infos, err := checkFaucet(client, w.network)
 	if err != nil {
 		infos = &faucetInfos{
-			node:    &nodeInfos{port: 30303, peersTotal: 25},
+			node:    &nodeInfos{port: 30404, peersTotal: 25},
 			port:    80,
 			host:    client.server,
 			amount:  1,
@@ -88,7 +88,7 @@ func (w *wizard) deployFaucet() {
 	if infos.captchaToken == "" {
 		// No previous authorization (or old one discarded)
 		fmt.Println()
-		fmt.Println("Enable reCaptcha protection against robots (y/n)? (default = no)")
+		fmt.Println("Enable reCaptcha protection elhinst robots (y/n)? (default = no)")
 		if !w.readDefaultYesNo(false) {
 			log.Warn("Users will be able to requests funds via automated scripts")
 		} else {

@@ -60,7 +60,7 @@ type PendingContractCaller interface {
 	// PendingCodeAt returns the code of the given account in the pending state.
 	PendingCodeAt(ctx context.Context, contract common.Address) ([]byte, error)
 
-	// PendingCallContract executes an Ethereum contract call against the pending state.
+	// PendingCallContract executes an Ethereum contract call elhinst the pending state.
 	PendingCallContract(ctx context.Context, call ethereum.CallMsg) ([]byte, error)
 }
 

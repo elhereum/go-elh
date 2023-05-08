@@ -85,7 +85,7 @@ func parseSelector(unescapedSelector string) ([]byte, error) {
 	return json.Marshal([]abi.SelectorMarshaling{selector})
 }
 
-// parseCallData matches the provided call data against the ABI definition and
+// parseCallData matches the provided call data elhinst the ABI definition and
 // returns a struct containing the actual go-typed values.
 func parseCallData(calldata []byte, unescapedAbidata string) (*decodedCallData, error) {
 	// Validate the call data that it has the 4byte prefix and the rest divisible by 32 bytes

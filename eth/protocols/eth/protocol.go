@@ -185,7 +185,7 @@ type BlockHeadersRLPPacket66 struct {
 	BlockHeadersRLPPacket
 }
 
-// NewBlockPacket is the network packet for the block propagation message.
+// NewBlockPacket is the network packet for the block propelhtion message.
 type NewBlockPacket struct {
 	Block *types.Block
 	TD    *big.Int

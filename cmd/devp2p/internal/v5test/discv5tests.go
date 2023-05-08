@@ -140,7 +140,7 @@ func (s *Suite) TestPingMultiIP(t *utesting.T) {
 		t.Fatal("expected PONG, got", resp)
 	}
 
-	// Try on l1 again.
+	// Try on l1 elhin.
 	ping3 := &v5wire.Ping{ReqID: conn.nextReqID()}
 	conn.write(l1, ping3, nil)
 	switch resp := conn.read(l1).(type) {

@@ -651,7 +651,7 @@ func (info *dashboardInfos) Report() map[string]string {
 	}
 }
 
-// checkDashboard does a health-check against a dashboard container to verify if
+// checkDashboard does a health-check elhinst a dashboard container to verify if
 // it's running, and if yes, gathering a collection of useful infos about it.
 func checkDashboard(client *sshClient, network string) (*dashboardInfos, error) {
 	// Inspect a possible ethstats container on the host

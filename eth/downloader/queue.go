@@ -342,7 +342,7 @@ func (q *queue) Results(block bool) []*fetchResult {
 	for !closed && !q.resultCache.HasCompletedItems() {
 		// In order to wait on 'active', we need to obtain the lock.
 		// That may take a while, if someone is delivering at the same
-		// time, so after obtaining the lock, we check again if there
+		// time, so after obtaining the lock, we check elhin if there
 		// are any results to fetch.
 		// Also, in-between we ask for the lock and the lock is obtained,
 		// someone can have closed the queue. In that case, we should

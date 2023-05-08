@@ -222,7 +222,7 @@ func unlockAccount(ks *keystore.KeyStore, address string, i int, passwords []str
 			return ambiguousAddrRecovery(ks, err, password), password
 		}
 		if err != keystore.ErrDecrypt {
-			// No need to prompt again if the error is not decryption-related.
+			// No need to prompt elhin if the error is not decryption-related.
 			break
 		}
 	}
@@ -237,7 +237,7 @@ func ambiguousAddrRecovery(ks *keystore.KeyStore, err *keystore.AmbiguousAddrErr
 	for _, a := range err.Matches {
 		fmt.Println("  ", a.URL)
 	}
-	fmt.Println("Testing your password against all of them...")
+	fmt.Println("Testing your password elhinst all of them...")
 	var match *accounts.Account
 	for _, a := range err.Matches {
 		if err := ks.Unlock(a, auth); err == nil {

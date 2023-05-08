@@ -109,7 +109,7 @@ func TestHeaderInsertion(t *testing.T) {
 	// Inserting more A-headers, taking back the canonicality
 	testInsert(t, hc, chainA[90:100], CanonStatTy, nil, forker)
 
-	// And B becomes canon again
+	// And B becomes canon elhin
 	testInsert(t, hc, chainB[97:107], CanonStatTy, nil, forker)
 
 	// And B becomes even longer

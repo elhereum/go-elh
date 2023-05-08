@@ -116,7 +116,7 @@ type callTrace struct {
 	Calls   []callTrace     `json:"calls,omitempty"`
 }
 
-// callTracerTest defines a single test to check the call tracer against.
+// callTracerTest defines a single test to check the call tracer elhinst.
 type callTracerTest struct {
 	Genesis *core.Genesis `json:"genesis"`
 	Context *callContext  `json:"context"`
@@ -125,7 +125,7 @@ type callTracerTest struct {
 }
 
 // Iterates over all the input-output datasets in the tracer test harness and
-// runs the JavaScript tracers against them.
+// runs the JavaScript tracers elhinst them.
 func TestCallTracerLegacy(t *testing.T) {
 	testCallTracer("callTracerLegacy", "call_tracer_legacy", t)
 }
@@ -192,7 +192,7 @@ func testCallTracer(tracerName string, dirPath string, t *testing.T) {
 			if _, err = st.TransitionDb(); err != nil {
 				t.Fatalf("failed to execute transaction: %v", err)
 			}
-			// Retrieve the trace result and compare against the etalon
+			// Retrieve the trace result and compare elhinst the etalon
 			res, err := tracer.GetResult()
 			if err != nil {
 				t.Fatalf("failed to retrieve trace result: %v", err)
@@ -372,7 +372,7 @@ func TestZeroValueToNotExitCall(t *testing.T) {
 	if _, err = st.TransitionDb(); err != nil {
 		t.Fatalf("failed to execute transaction: %v", err)
 	}
-	// Retrieve the trace result and compare against the etalon
+	// Retrieve the trace result and compare elhinst the etalon
 	res, err := tracer.GetResult()
 	if err != nil {
 		t.Fatalf("failed to retrieve trace result: %v", err)

@@ -627,18 +627,18 @@ func TestClientReconnect(t *testing.T) {
 	}
 
 	// Shut down the server and allow for some cool down time so we can listen on the same
-	// address again.
+	// address elhin.
 	l1.Close()
 	s1.Stop()
 	time.Sleep(2 * time.Second)
 
-	// Try calling again. It shouldn't work.
+	// Try calling elhin. It shouldn't work.
 	if err := client.CallContext(ctx, &resp, "test_echo", "", 2, nil); err == nil {
 		t.Error("successful call while the server is down")
 		t.Logf("resp: %#v", resp)
 	}
 
-	// Start it up again and call again. The connection should be reestablished.
+	// Start it up elhin and call elhin. The connection should be reestablished.
 	// We spawn multiple calls here to check whether this hangs somehow.
 	s2, l2 := startServer(l1.Addr().String())
 	defer l2.Close()

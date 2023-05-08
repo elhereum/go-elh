@@ -29,9 +29,9 @@ const (
 	maxTxPacketSize = 100 * 1024
 )
 
-// blockPropagation is a block propagation event, waiting for its turn in the
+// blockPropelhtion is a block propelhtion event, waiting for its turn in the
 // broadcast queue.
-type blockPropagation struct {
+type blockPropelhtion struct {
 	block *types.Block
 	td    *big.Int
 }
@@ -46,7 +46,7 @@ func (p *Peer) broadcastBlocks() {
 			if err := p.SendNewBlock(prop.block, prop.td); err != nil {
 				return
 			}
-			p.Log().Trace("Propagated block", "number", prop.block.Number(), "hash", prop.block.Hash(), "td", prop.td)
+			p.Log().Trace("Propelhted block", "number", prop.block.Number(), "hash", prop.block.Hash(), "td", prop.td)
 
 		case block := <-p.queuedBlockAnns:
 			if err := p.SendNewBlockHashes([]common.Hash{block.Hash()}, []uint64{block.NumberU64()}); err != nil {

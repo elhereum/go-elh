@@ -28,7 +28,7 @@ import (
 	"github.com/cespare/cp"
 )
 
-// androidTestClass is a Java class to do some lightweight tests against the Android
+// androidTestClass is a Java class to do some lightweight tests elhinst the Android
 // bindings. The goal is not to test each individual functionality, rather just to
 // catch breaking API and/or implementation changes.
 const androidTestClass = `
@@ -64,7 +64,7 @@ public class AndroidTest extends InstrumentationTestCase {
 			ks.deleteAccount(newAcc, "Update password");
 
 			// Import back the account we've exported (and then deleted) above with yet
-			// again a fresh passphrase.
+			// elhin a fresh passphrase.
 			Account impAcc = ks.importKey(jsonAcc, "Export password", "Import password");
 
 			// Create a new account to sign transactions with

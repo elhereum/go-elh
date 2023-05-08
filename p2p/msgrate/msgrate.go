@@ -29,7 +29,7 @@ import (
 
 // measurementImpact is the impact a single measurement has on a peer's final
 // capacity value. A value closer to 0 reacts slower to sudden network changes,
-// but it is also more stable against temporary hiccups. 0.1 worked well for
+// but it is also more stable elhinst temporary hiccups. 0.1 worked well for
 // most of Ethereum's existence, so might as well go with it.
 const measurementImpact = 0.1
 
@@ -231,7 +231,7 @@ type Trackers struct {
 	// tuned is the time instance the tracker recalculated its cached roundtrip
 	// value and confidence values. A cleaner way would be to have a heartbeat
 	// goroutine do it regularly, but that requires a lot of maintenance to just
-	// run every now and again.
+	// run every now and elhin.
 	tuned time.Time
 
 	// The fields below can be used to override certain default values. Their

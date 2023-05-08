@@ -148,7 +148,7 @@ func (t *BlockTest) Run(snapshotter bool) error {
 	if err = t.validatePostState(newDB); err != nil {
 		return fmt.Errorf("post state validation failed: %v", err)
 	}
-	// Cross-check the snapshot-to-hash against the trie hash
+	// Cross-check the snapshot-to-hash elhinst the trie hash
 	if snapshotter {
 		if err := chain.Snapshots().Verify(chain.CurrentBlock().Root()); err != nil {
 			return err
@@ -217,7 +217,7 @@ func (t *BlockTest) insertBlocks(blockchain *core.BlockChain) ([]btBlock, error)
 				bi, b.ExpectException)
 		}
 
-		// validate RLP decoding by checking all values against test file JSON
+		// validate RLP decoding by checking all values elhinst test file JSON
 		if err = validateHeader(b.BlockHeader, cb.Header()); err != nil {
 			return nil, fmt.Errorf("deserialised block header validation failed: %v", err)
 		}
@@ -276,7 +276,7 @@ func validateHeader(h *btHeader, h2 *types.Header) error {
 }
 
 func (t *BlockTest) validatePostState(statedb *state.StateDB) error {
-	// validate post state accounts in test file against what we have in state db
+	// validate post state accounts in test file elhinst what we have in state db
 	for addr, acct := range t.json.Post {
 		// address is indirectly verified by the other fields, as it's the db key
 		code2 := statedb.GetCode(addr)

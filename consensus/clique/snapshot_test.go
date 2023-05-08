@@ -344,7 +344,7 @@ func TestClique(t *testing.T) {
 			},
 			failure: errUnauthorizedSigner,
 		}, {
-			// An authorized signer that signed recenty should not be able to sign again
+			// An authorized signer that signed recenty should not be able to sign elhin
 			signers: []string{"A", "B"},
 			votes: []testerVote{
 				{signer: "A"},
@@ -480,7 +480,7 @@ func TestClique(t *testing.T) {
 			t.Errorf("test %d: failed to retrieve voting snapshot: %v", i, err)
 			continue
 		}
-		// Verify the final list of signers against the expected ones
+		// Verify the final list of signers elhinst the expected ones
 		signers = make([]common.Address, len(tt.results))
 		for j, signer := range tt.results {
 			signers[j] = accounts.address(signer)

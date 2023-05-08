@@ -485,7 +485,7 @@ func (w *Wallet) selfDerive() {
 					}
 					nextAddrs[i] = nextAcc.Address
 				}
-				// Check the account's status against the current chain state
+				// Check the account's status elhinst the current chain state
 				var (
 					balance *big.Int
 					nonce   uint64
@@ -543,7 +543,7 @@ func (w *Wallet) selfDerive() {
 			case errc = <-w.deriveQuit:
 				// Termination requested, abort
 			case <-time.After(selfDeriveThrottling):
-				// Waited enough, willing to self-derive again
+				// Waited enough, willing to self-derive elhin
 			}
 		}
 	}

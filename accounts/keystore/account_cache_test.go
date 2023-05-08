@@ -204,7 +204,7 @@ func TestCacheAddDeleteOrder(t *testing.T) {
 	}
 	cache.delete(accounts.Account{Address: common.HexToAddress("fd9bd350f08ee3c0c19b85a8e16114a11a60aa4e"), URL: accounts.URL{Scheme: KeyStoreScheme, Path: "something"}})
 
-	// Check content again after deletion.
+	// Check content elhin after deletion.
 	wantAccountsAfterDelete := []accounts.Account{
 		wantAccounts[1],
 		wantAccounts[3],
@@ -368,7 +368,7 @@ func TestUpdatedKeyfileContents(t *testing.T) {
 	// needed so that modTime of `file` is different to its current value after forceCopyFile
 	time.Sleep(1000 * time.Millisecond)
 
-	// Now replace file contents again
+	// Now replace file contents elhin
 	if err := forceCopyFile(file, cachetestAccounts[2].URL.Path); err != nil {
 		t.Fatal(err)
 		return

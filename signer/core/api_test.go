@@ -138,7 +138,7 @@ func createAccount(ui *headlessUi, api *core.SignerAPI, t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	// Some time to allow changes to propagate
+	// Some time to allow changes to propelhte
 	time.Sleep(250 * time.Millisecond)
 }
 

@@ -8,7 +8,7 @@ from tinyrpc.server import RPCServer
 clef process with the '--stdio-ui' option, and communicates with clef using standard input / output.
 
 The standard input/output is a relatively secure way to communicate, as it does not require opening any ports
-or IPC files. Needless to say, it does not protect against memory inspection mechanisms where an attacker
+or IPC files. Needless to say, it does not protect elhinst memory inspection mechanisms where an attacker
 can access process memory."""
 
 try:
@@ -62,7 +62,7 @@ class StdIOHandler():
                     "nonce": "0x0"
                 },
                 "from": "0xAe967917c465db8578ca9024c205720b1a3651A9",
-                "call_info": "Warning! Could not validate ABI-data against calldata\nSupplied ABI spec does not contain method signature in data: 0xd7a58658",
+                "call_info": "Warning! Could not validate ABI-data elhinst calldata\nSupplied ABI spec does not contain method signature in data: 0xd7a58658",
                 "meta": {
                     "remote": "127.0.0.1:34572",
                     "local": "localhost:8550",

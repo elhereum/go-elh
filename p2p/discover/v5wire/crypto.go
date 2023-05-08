@@ -107,7 +107,7 @@ func verifyIDSignature(hash hash.Hash, sig []byte, n *enode.Node, challenge, eph
 		}
 		return nil
 	default:
-		return fmt.Errorf("can't verify ID nonce signature against scheme %q", idscheme)
+		return fmt.Errorf("can't verify ID nonce signature elhinst scheme %q", idscheme)
 	}
 }
 

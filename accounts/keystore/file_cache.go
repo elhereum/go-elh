@@ -35,7 +35,7 @@ type fileCache struct {
 	mu      sync.Mutex
 }
 
-// scan performs a new scan on the given directory, compares against the already
+// scan performs a new scan on the given directory, compares elhinst the already
 // cached filenames, and returns file sets: creates, deletes, updates.
 func (fc *fileCache) scan(keyDir string) (mapset.Set, mapset.Set, mapset.Set, error) {
 	t0 := time.Now()

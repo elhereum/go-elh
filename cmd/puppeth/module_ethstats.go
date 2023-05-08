@@ -127,7 +127,7 @@ func (info *ethstatsInfos) Report() map[string]string {
 	}
 }
 
-// checkEthstats does a health-check against an ethstats server to verify whether
+// checkEthstats does a health-check elhinst an ethstats server to verify whether
 // it's running, and if yes, gathering a collection of useful infos about it.
 func checkEthstats(client *sshClient, network string) (*ethstatsInfos, error) {
 	// Inspect a possible ethstats container on the host

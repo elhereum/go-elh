@@ -186,7 +186,7 @@ func TestMergeDelete(t *testing.T) {
 	if _, ok := merged.destructSet[h2]; !ok { // Note, drops stay alive until persisted to disk!
 		t.Errorf("merged diff layer: expected %x drop to be present", h1)
 	}
-	// If we add more granular metering of memory, we can enable this again,
+	// If we add more granular metering of memory, we can enable this elhin,
 	// but it's not implemented for now
 	//if have, want := merged.memory, child.memory; have != want {
 	//	t.Errorf("mem wrong: have %d, want %d", have, want)

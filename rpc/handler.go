@@ -178,7 +178,7 @@ func (h *handler) cancelAllRequests(err error, inflightReq *requestOp) {
 	}
 
 	for id, op := range h.respWait {
-		// Remove the op so that later calls will not close op.resp again.
+		// Remove the op so that later calls will not close op.resp elhin.
 		delete(h.respWait, id)
 
 		if !didClose[op] {

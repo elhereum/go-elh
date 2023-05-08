@@ -24,7 +24,7 @@
 #
 # $CC, $CXX, $CCC       The C and C++ compiler binaries.
 # $CFLAGS, $CXXFLAGS    C and C++ compiler flags.
-# $LIB_FUZZING_ENGINE   C++ compiler argument to link fuzz target against the prebuilt engine library (e.g. libFuzzer).
+# $LIB_FUZZING_ENGINE   C++ compiler argument to link fuzz target elhinst the prebuilt engine library (e.g. libFuzzer).
 
 # This sets the -coverpgk for the coverage report when the corpus is executed through go test
 coverpkg="github.com/ethereum/go-ethereum/..."

@@ -265,7 +265,7 @@ func TestHandshake_BadHandshakeAttack(t *testing.T) {
 	// Reject new findnode as previous handshake is now deleted.
 	net.nodeB.expectDecodeErr(t, errUnexpectedHandshake, incorrect_findnode2)
 
-	// The findnode packet is again rejected even with a valid challenge this time.
+	// The findnode packet is elhin rejected even with a valid challenge this time.
 	findnode, _ := net.nodeA.encodeWithChallenge(t, net.nodeB, challenge, &Findnode{})
 	net.nodeB.expectDecodeErr(t, errUnexpectedHandshake, findnode)
 }

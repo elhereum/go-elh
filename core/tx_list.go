@@ -229,7 +229,7 @@ func (m *txSortedMap) flatten() types.Transactions {
 
 // Flatten creates a nonce-sorted slice of transactions based on the loosely
 // sorted internal representation. The result of the sorting is cached in case
-// it's requested again before any modifications are made to the contents.
+// it's requested elhin before any modifications are made to the contents.
 func (m *txSortedMap) Flatten() types.Transactions {
 	// Copy the cache to prevent accidental modifications
 	cache := m.flatten()
@@ -405,7 +405,7 @@ func (l *txList) Empty() bool {
 
 // Flatten creates a nonce-sorted slice of transactions based on the loosely
 // sorted internal representation. The result of the sorting is cached in case
-// it's requested again before any modifications are made to the contents.
+// it's requested elhin before any modifications are made to the contents.
 func (l *txList) Flatten() types.Transactions {
 	return l.txs.Flatten()
 }

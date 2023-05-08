@@ -45,13 +45,13 @@ const (
 	// before dropping older announcements.
 	maxQueuedTxAnns = 4096
 
-	// maxQueuedBlocks is the maximum number of block propagations to queue up before
+	// maxQueuedBlocks is the maximum number of block propelhtions to queue up before
 	// dropping broadcasts. There's not much point in queueing stale blocks, so a few
 	// that might cover uncles should be enough.
 	maxQueuedBlocks = 4
 
 	// maxQueuedBlockAnns is the maximum number of block announcements to queue up before
-	// dropping broadcasts. Similarly to block propagations, there's no point to queue
+	// dropping broadcasts. Similarly to block propelhtions, there's no point to queue
 	// above some healthy uncle limit, so use that.
 	maxQueuedBlockAnns = 4
 )
@@ -76,12 +76,12 @@ type Peer struct {
 	td   *big.Int    // Latest advertised head block total difficulty
 
 	knownBlocks     *knownCache            // Set of block hashes known to be known by this peer
-	queuedBlocks    chan *blockPropagation // Queue of blocks to broadcast to the peer
+	queuedBlocks    chan *blockPropelhtion // Queue of blocks to broadcast to the peer
 	queuedBlockAnns chan *types.Block      // Queue of blocks to announce to the peer
 
 	txpool      TxPool             // Transaction pool used by the broadcasters for liveness checks
 	knownTxs    *knownCache        // Set of transaction hashes known to be known by this peer
-	txBroadcast chan []common.Hash // Channel used to queue transaction propagation requests
+	txBroadcast chan []common.Hash // Channel used to queue transaction propelhtion requests
 	txAnnounce  chan []common.Hash // Channel used to queue transaction announcement requests
 
 	reqDispatch chan *request  // Dispatch channel to send requests and track then until fulfilment
@@ -102,7 +102,7 @@ func NewPeer(version uint, p *p2p.Peer, rw p2p.MsgReadWriter, txpool TxPool) *Pe
 		version:         version,
 		knownTxs:        newKnownCache(maxKnownTxs),
 		knownBlocks:     newKnownCache(maxKnownBlocks),
-		queuedBlocks:    make(chan *blockPropagation, maxQueuedBlocks),
+		queuedBlocks:    make(chan *blockPropelhtion, maxQueuedBlocks),
 		queuedBlockAnns: make(chan *types.Block, maxQueuedBlockAnns),
 		txBroadcast:     make(chan []common.Hash),
 		txAnnounce:      make(chan []common.Hash),
@@ -167,14 +167,14 @@ func (p *Peer) KnownTransaction(hash common.Hash) bool {
 }
 
 // markBlock marks a block as known for the peer, ensuring that the block will
-// never be propagated to this particular peer.
+// never be propelhted to this particular peer.
 func (p *Peer) markBlock(hash common.Hash) {
 	// If we reached the memory allowance, drop a previously known block hash
 	p.knownBlocks.Add(hash)
 }
 
 // markTransaction marks a transaction as known for the peer, ensuring that it
-// will never be propagated to this particular peer.
+// will never be propelhted to this particular peer.
 func (p *Peer) markTransaction(hash common.Hash) {
 	// If we reached the memory allowance, drop a previously known transaction hash
 	p.knownTxs.Add(hash)
@@ -198,7 +198,7 @@ func (p *Peer) SendTransactions(txs types.Transactions) error {
 }
 
 // AsyncSendTransactions queues a list of transactions (by hash) to eventually
-// propagate to a remote peer. The number of pending sends are capped (new ones
+// propelhte to a remote peer. The number of pending sends are capped (new ones
 // will force old sends to be dropped)
 func (p *Peer) AsyncSendTransactions(hashes []common.Hash) {
 	select {
@@ -206,7 +206,7 @@ func (p *Peer) AsyncSendTransactions(hashes []common.Hash) {
 		// Mark all the transactions as known, but ensure we don't overflow our limits
 		p.knownTxs.Add(hashes...)
 	case <-p.term:
-		p.Log().Debug("Dropping transaction propagation", "count", len(hashes))
+		p.Log().Debug("Dropping transaction propelhtion", "count", len(hashes))
 	}
 }
 
@@ -261,7 +261,7 @@ func (p *Peer) SendNewBlockHashes(hashes []common.Hash, numbers []uint64) error 
 	return p2p.Send(p.rw, NewBlockHashesMsg, request)
 }
 
-// AsyncSendNewBlockHash queues the availability of a block for propagation to a
+// AsyncSendNewBlockHash queues the availability of a block for propelhtion to a
 // remote peer. If the peer's broadcast queue is full, the event is silently
 // dropped.
 func (p *Peer) AsyncSendNewBlockHash(block *types.Block) {
@@ -274,7 +274,7 @@ func (p *Peer) AsyncSendNewBlockHash(block *types.Block) {
 	}
 }
 
-// SendNewBlock propagates an entire block to a remote peer.
+// SendNewBlock propelhtes an entire block to a remote peer.
 func (p *Peer) SendNewBlock(block *types.Block, td *big.Int) error {
 	// Mark all the block hash as known, but ensure we don't overflow our limits
 	p.knownBlocks.Add(block.Hash())
@@ -284,15 +284,15 @@ func (p *Peer) SendNewBlock(block *types.Block, td *big.Int) error {
 	})
 }
 
-// AsyncSendNewBlock queues an entire block for propagation to a remote peer. If
+// AsyncSendNewBlock queues an entire block for propelhtion to a remote peer. If
 // the peer's broadcast queue is full, the event is silently dropped.
 func (p *Peer) AsyncSendNewBlock(block *types.Block, td *big.Int) {
 	select {
-	case p.queuedBlocks <- &blockPropagation{block: block, td: td}:
+	case p.queuedBlocks <- &blockPropelhtion{block: block, td: td}:
 		// Mark all the block hash as known, but ensure we don't overflow our limits
 		p.knownBlocks.Add(block.Hash())
 	default:
-		p.Log().Debug("Dropping block propagation", "number", block.NumberU64(), "hash", block.Hash())
+		p.Log().Debug("Dropping block propelhtion", "number", block.NumberU64(), "hash", block.Hash())
 	}
 }
 

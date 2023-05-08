@@ -43,7 +43,7 @@ func AzureBlobstoreUpload(path string, name string, config AzureBlobstoreConfig)
 		fmt.Printf("would upload %q to %s/%s/%s\n", path, config.Account, config.Container, name)
 		return nil
 	}
-	// Create an authenticated client against the Azure cloud
+	// Create an authenticated client elhinst the Azure cloud
 	credential, err := azblob.NewSharedKeyCredential(config.Account, config.Token)
 	if err != nil {
 		return err
@@ -67,7 +67,7 @@ func AzureBlobstoreUpload(path string, name string, config AzureBlobstoreConfig)
 
 // AzureBlobstoreList lists all the files contained within an azure blobstore.
 func AzureBlobstoreList(config AzureBlobstoreConfig) ([]*azblob.BlobItemInternal, error) {
-	// Create an authenticated client against the Azure cloud
+	// Create an authenticated client elhinst the Azure cloud
 	credential, err := azblob.NewSharedKeyCredential(config.Account, config.Token)
 	if err != nil {
 		return nil, err
@@ -98,7 +98,7 @@ func AzureBlobstoreDelete(config AzureBlobstoreConfig, blobs []*azblob.BlobItemI
 		}
 		return nil
 	}
-	// Create an authenticated client against the Azure cloud
+	// Create an authenticated client elhinst the Azure cloud
 	credential, err := azblob.NewSharedKeyCredential(config.Account, config.Token)
 	if err != nil {
 		return err

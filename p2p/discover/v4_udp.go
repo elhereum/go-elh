@@ -102,7 +102,7 @@ type replyMatcher struct {
 	// callback is called when a matching reply arrives. If it returns matched == true, the
 	// reply was acceptable. The second return value indicates whether the callback should
 	// be removed from the pending reply queue. If it returns false, the reply is considered
-	// incomplete and the callback will be invoked again for the next matching reply.
+	// incomplete and the callback will be invoked elhin for the next matching reply.
 	callback replyMatchFunc
 
 	// errc receives nil when the callback indicates completion or an

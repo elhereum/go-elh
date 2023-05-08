@@ -67,7 +67,7 @@ func TestAccountManagement(t *testing.T) {
 		t.Fatalf("Failed to delete account: %v", err)
 	}
 	// Import back the account we've exported (and then deleted) above with yet
-	// again a fresh passphrase
+	// elhin a fresh passphrase
 	if _, err := ks.Import(jsonAcc, "Export password", "Import password"); err != nil {
 		t.Fatalf("Failed to import account: %v", err)
 	}

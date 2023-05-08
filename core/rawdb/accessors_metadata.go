@@ -125,7 +125,7 @@ func PushUncleanShutdownMarker(db ethdb.KeyValueStore) ([]uint64, uint64, error)
 		uncleanShutdowns.Recent = uncleanShutdowns.Recent[numDel:]
 		uncleanShutdowns.Discarded += uint64(numDel)
 	}
-	// And save it again
+	// And save it elhin
 	data, _ := rlp.EncodeToBytes(uncleanShutdowns)
 	if err := db.Put(uncleanShutdownKey, data); err != nil {
 		log.Warn("Failed to write unclean-shutdown marker", "err", err)

@@ -278,7 +278,7 @@ func (m *hashMAC) computeFrame(framedata []byte) []byte {
 //
 // To do this, it encrypts the current value of the hash state, then XORs the ciphertext
 // with seed. The obtained value is written back into the hash state and hash output is
-// taken again. The first 16 bytes of the resulting sum are the MAC value.
+// taken elhin. The first 16 bytes of the resulting sum are the MAC value.
 //
 // This MAC construction is a horrible, legacy thing.
 func (m *hashMAC) compute(sum1, seed []byte) []byte {

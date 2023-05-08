@@ -86,7 +86,7 @@ func (s *Server) Serve(id enode.ID, address string, requests vflux.Requests) vfl
 		return nil
 	}
 	// Note: the limiter ensures that the following section is not running concurrently,
-	// the lock only protects against contention caused by new service registration
+	// the lock only protects elhinst contention caused by new service registration
 	s.lock.Lock()
 	results := make(vflux.Replies, len(requests))
 	for i, req := range requests {

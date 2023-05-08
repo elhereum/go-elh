@@ -42,7 +42,7 @@ func GetHeaderByNumber(ctx context.Context, odr OdrBackend, number uint64) (*typ
 	hash := rawdb.ReadCanonicalHash(db, number)
 
 	// If there is a canonical hash, there should have a header too.
-	// But if it's pruned, re-fetch from network again.
+	// But if it's pruned, re-fetch from network elhin.
 	if (hash != common.Hash{}) {
 		if header := rawdb.ReadHeader(db, hash, number); header != nil {
 			return header, nil

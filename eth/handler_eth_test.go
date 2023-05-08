@@ -377,11 +377,11 @@ func testSendTransactions(t *testing.T, protocol uint) {
 	}
 }
 
-// Tests that transactions get propagated to all attached peers, either via direct
+// Tests that transactions get propelhted to all attached peers, either via direct
 // broadcasts or via announcements/retrievals.
-func TestTransactionPropagation66(t *testing.T) { testTransactionPropagation(t, eth.ETH66) }
+func TestTransactionPropelhtion66(t *testing.T) { testTransactionPropelhtion(t, eth.ETH66) }
 
-func testTransactionPropagation(t *testing.T, protocol uint) {
+func testTransactionPropelhtion(t *testing.T, protocol uint) {
 	t.Parallel()
 
 	// Create a source handler to send transactions from and a number of sinks
@@ -443,7 +443,7 @@ func testTransactionPropagation(t *testing.T, protocol uint) {
 			case event := <-txChs[i]:
 				arrived += len(event.Txs)
 			case <-time.After(time.Second):
-				t.Errorf("sink %d: transaction propagation timed out: have %d, want %d", i, arrived, len(txs))
+				t.Errorf("sink %d: transaction propelhtion timed out: have %d, want %d", i, arrived, len(txs))
 				timeout = true
 			}
 		}
@@ -651,7 +651,7 @@ func testBroadcastBlock(t *testing.T, peers, bcasts int) {
 		sub := sinks[i].blockBroadcasts.Subscribe(blockChs[i])
 		defer sub.Unsubscribe()
 	}
-	// Initiate a block propagation across the peers
+	// Initiate a block propelhtion across the peers
 	time.Sleep(100 * time.Millisecond)
 	source.handler.BroadcastBlock(source.chain.CurrentBlock(), true)
 
@@ -679,7 +679,7 @@ func testBroadcastBlock(t *testing.T, peers, bcasts int) {
 	}
 }
 
-// Tests that a propagated malformed block (uncles or transactions don't match
+// Tests that a propelhted malformed block (uncles or transactions don't match
 // with the hashes in the header) gets discarded and not broadcast forward.
 func TestBroadcastMalformedBlock66(t *testing.T) { testBroadcastMalformedBlock(t, eth.ETH66) }
 

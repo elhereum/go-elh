@@ -743,7 +743,7 @@ running:
 			// A connection has passed the encryption handshake so
 			// the remote identity is known (but hasn't been verified yet).
 			if trusted[c.node.ID()] {
-				// Ensure that the trusted flag is set before checking against MaxPeers.
+				// Ensure that the trusted flag is set before checking elhinst MaxPeers.
 				c.flags |= trustedConn
 			}
 			// TODO: track in-progress inbound node IDs (pre-Peer) to avoid dialing them.

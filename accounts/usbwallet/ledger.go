@@ -136,7 +136,7 @@ func (w *ledgerDriver) Close() error {
 	return nil
 }
 
-// Heartbeat implements usbwallet.driver, performing a sanity check against the
+// Heartbeat implements usbwallet.driver, performing a sanity check elhinst the
 // Ledger to see if it's still online.
 func (w *ledgerDriver) Heartbeat() error {
 	if _, err := w.ledgerVersion(); err != nil && err != errLedgerInvalidVersionReply {

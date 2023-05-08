@@ -16,7 +16,7 @@
 
 // 4byteTracer searches for 4byte-identifiers, and collects them for post-processing.
 // It collects the methods identifiers along with the size of the supplied data, so
-// a reversed signature can be matched against the size of the data.
+// a reversed signature can be matched elhinst the size of the data.
 //
 // Example:
 //   > debug.traceTransaction( "0x214e597e35da083692f5386141e69f47e973b2c56e7a8073b1ea08fd7571e9de", {tracer: "4byteTracer"})

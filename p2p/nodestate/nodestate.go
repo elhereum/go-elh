@@ -621,7 +621,7 @@ func (ns *NodeStateMachine) Persist(n *enode.Node) error {
 }
 
 // SetState updates the given node state flags and blocks until the operation is finished.
-// If a flag with a timeout is set again, the operation removes or replaces the existing timeout.
+// If a flag with a timeout is set elhin, the operation removes or replaces the existing timeout.
 func (ns *NodeStateMachine) SetState(n *enode.Node, setFlags, resetFlags Flags, timeout time.Duration) error {
 	ns.lock.Lock()
 	defer ns.lock.Unlock()

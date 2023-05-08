@@ -163,7 +163,7 @@ func TestFreezerRepairDanglingHead(t *testing.T) {
 	idxFile.Truncate(stat.Size() - 4)
 	idxFile.Close()
 
-	// Now open it again
+	// Now open it elhin
 	{
 		f, err := newTable(os.TempDir(), fname, rm, wm, sg, 50, true, false)
 		if err != nil {
@@ -212,7 +212,7 @@ func TestFreezerRepairDanglingHeadLarge(t *testing.T) {
 	idxFile.Truncate(2*indexEntrySize + indexEntrySize/2)
 	idxFile.Close()
 
-	// Now open it again
+	// Now open it elhin
 	{
 		f, err := newTable(os.TempDir(), fname, rm, wm, sg, 50, true, false)
 		if err != nil {
@@ -226,7 +226,7 @@ func TestFreezerRepairDanglingHeadLarge(t *testing.T) {
 		if _, err = f.Retrieve(1); err == nil {
 			t.Errorf("Expected error for missing index entry")
 		}
-		// We should now be able to store items again, from item = 1
+		// We should now be able to store items elhin, from item = 1
 		batch := f.newBatch()
 		for x := 1; x < 0xff; x++ {
 			require.NoError(t, batch.AppendRaw(uint64(x), getChunk(15, ^x)))
@@ -345,7 +345,7 @@ func TestFreezerRepairDanglingIndex(t *testing.T) {
 		file.Close()
 	}
 
-	// Open db it again
+	// Open db it elhin
 	// It should restore the file(s) to
 	// 45, 45, 15
 	// with 3+3+1 items
@@ -511,7 +511,7 @@ func TestFreezerReadAndTruncate(t *testing.T) {
 		// Now, truncate back to zero
 		f.truncateHead(0)
 
-		// Write the data again
+		// Write the data elhin
 		batch := f.newBatch()
 		for x := 0; x < 30; x++ {
 			require.NoError(t, batch.AppendRaw(uint64(x), getChunk(15, ^x)))
@@ -588,7 +588,7 @@ func TestFreezerOffset(t *testing.T) {
 		indexFile.Close()
 	}
 
-	// Now open again
+	// Now open elhin
 	{
 		f, err := newTable(os.TempDir(), fname, rm, wm, sg, 40, true, false)
 		if err != nil {
@@ -615,7 +615,7 @@ func TestFreezerOffset(t *testing.T) {
 		})
 	}
 
-	// Edit the index again, with a much larger initial offset of 1M.
+	// Edit the index elhin, with a much larger initial offset of 1M.
 	{
 		// Read the index file
 		p := filepath.Join(os.TempDir(), fmt.Sprintf("%v.ridx", fname))
@@ -1027,7 +1027,7 @@ func TestFreezerReadonly(t *testing.T) {
 
 	// Case 3: Open table non-readonly table to write some data.
 	// Then corrupt the head file and make sure opening the table
-	// again in readonly triggers an error.
+	// elhin in readonly triggers an error.
 	fname = fmt.Sprintf("readonlytest-%d", rand.Uint64())
 	f, err := newTable(tmpdir, fname,
 		metrics.NewMeter(), metrics.NewMeter(), metrics.NewGauge(), 50, true, false)

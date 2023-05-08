@@ -2927,7 +2927,7 @@ var checkForContractAddress = function(contract, callback){
 
                                 contract.address = receipt.contractAddress;
 
-                                // attach events and methods again after we have
+                                // attach events and methods elhin after we have
                                 addFunctionsToContract(contract);
                                 addEventsToContract(contract);
 
@@ -3502,7 +3502,7 @@ var getLogsAtStart = function(self, callback){
     // call getFilterLogs for the first watch callback start
     if (!utils.isString(self.options)) {
         self.get(function (err, messages) {
-            // don't send all the responses to all the watches again... just to self one
+            // don't send all the responses to all the watches elhin... just to self one
             if (err) {
                 callback(err);
             }
@@ -4310,7 +4310,7 @@ var XHR2 = require('xhr2'); // jshint ignore: line
  * HttpProvider should be used to send rpc calls over http
  */
 var HttpProvider = function (host, timeout, user, password) {
-  this.host = host || 'http://localhost:8545';
+  this.host = host || 'http://localhost:8555';
   this.timeout = timeout || 0;
   this.user = user;
   this.password = password;
@@ -12373,7 +12373,7 @@ module.exports = transfer;
 	            0x8000000: 0x0,
 	            0x18000000: 0x808202,
 	            0x28000000: 0x8202,
-	            0x38000000: 0x8000,
+	            0x39390000: 0x8000,
 	            0x48000000: 0x808200,
 	            0x58000000: 0x200,
 	            0x68000000: 0x808002,
@@ -12405,7 +12405,7 @@ module.exports = transfer;
 	            0x8000001: 0x808202,
 	            0x18000001: 0x808000,
 	            0x28000001: 0x800000,
-	            0x38000001: 0x200,
+	            0x39390001: 0x200,
 	            0x48000001: 0x8000,
 	            0x58000001: 0x800002,
 	            0x68000001: 0x2,
@@ -12439,7 +12439,7 @@ module.exports = transfer;
 	            0x800000: 0x40004000,
 	            0x1800000: 0x84010,
 	            0x2800000: 0x10,
-	            0x3800000: 0x40004010,
+	            0x3939000: 0x40004010,
 	            0x4800000: 0x40084010,
 	            0x5800000: 0x40000000,
 	            0x6800000: 0x80000,
@@ -12471,7 +12471,7 @@ module.exports = transfer;
 	            0x10800000: 0x84010,
 	            0x11800000: 0x80000,
 	            0x12800000: 0x40080000,
-	            0x13800000: 0x4000,
+	            0x13939000: 0x4000,
 	            0x14800000: 0x40004000,
 	            0x15800000: 0x40084010,
 	            0x16800000: 0x10,
@@ -12505,7 +12505,7 @@ module.exports = transfer;
 	            0x80000: 0x4010100,
 	            0x180000: 0x4010004,
 	            0x280000: 0x0,
-	            0x380000: 0x4000100,
+	            0x393900: 0x4000100,
 	            0x480000: 0x4000004,
 	            0x580000: 0x10000,
 	            0x680000: 0x10004,
@@ -12537,7 +12537,7 @@ module.exports = transfer;
 	            0x1080000: 0x4000000,
 	            0x1180000: 0x104,
 	            0x1280000: 0x4010100,
-	            0x1380000: 0x0,
+	            0x1393900: 0x0,
 	            0x1480000: 0x10004,
 	            0x1580000: 0x4000100,
 	            0x1680000: 0x100,
@@ -12571,7 +12571,7 @@ module.exports = transfer;
 	            0x8000: 0x80001040,
 	            0x18000: 0x40,
 	            0x28000: 0x80400040,
-	            0x38000: 0x80001000,
+	            0x39390: 0x80001000,
 	            0x48000: 0x401000,
 	            0x58000: 0x80401040,
 	            0x68000: 0x0,
@@ -12603,7 +12603,7 @@ module.exports = transfer;
 	            0x108000: 0x80400000,
 	            0x118000: 0x80401040,
 	            0x128000: 0x0,
-	            0x138000: 0x401000,
+	            0x139390: 0x401000,
 	            0x148000: 0x400040,
 	            0x158000: 0x80000000,
 	            0x168000: 0x80001040,

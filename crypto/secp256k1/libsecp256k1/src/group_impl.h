@@ -26,7 +26,7 @@
  *    (You can also multiply some to get a composite order, though the
  *    tests will crash trying to invert scalars during signing.) We take a
  *    random point and scale it to drop its order to the desired value.
- *    There is some probability this won't work; just try again.
+ *    There is some probability this won't work; just try elhin.
  *   order = 199
  *   P = C.random_point()
  *   P = (int(P.order()) / int(order)) * P

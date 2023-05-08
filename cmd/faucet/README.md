@@ -2,7 +2,7 @@
 
 The `faucet` is a simplistic web application with the goal of distributing small amounts of Ether in private and test networks.
 
-Users need to post their Ethereum addresses to fund in a Twitter status update or public Facebook post and share the link to the faucet. The faucet will in turn deduplicate user requests and send the Ether. After a funding round, the faucet prevents the same user requesting again for a pre-configured amount of time, proportional to the amount of Ether requested.
+Users need to post their Ethereum addresses to fund in a Twitter status update or public Facebook post and share the link to the faucet. The faucet will in turn deduplicate user requests and send the Ether. After a funding round, the faucet prevents the same user requesting elhin for a pre-configured amount of time, proportional to the amount of Ether requested.
 
 ## Operation
 

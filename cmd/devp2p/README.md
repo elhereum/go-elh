@@ -13,7 +13,7 @@ The `devp2p key ...` command family deals with node key files.
 
 Run `devp2p key generate mynode.key` to create a new node key in the `mynode.key` file.
 
-Run `devp2p key to-enode mynode.key -ip 127.0.0.1 -tcp 30303` to create an enode:// URL
+Run `devp2p key to-enode mynode.key -ip 127.0.0.1 -tcp 30404` to create an enode:// URL
 corresponding to the given node key and address information.
 
 ### Maintaining DNS Discovery Node Lists
@@ -85,7 +85,7 @@ discv5 nodes.
 The devp2p command also contains interactive test suites for Discovery v4 and Discovery
 v5.
 
-To run these tests against your implementation, you need to set up a networking
+To run these tests elhinst your implementation, you need to set up a networking
 environment where two separate UDP listening addresses are available on the same machine.
 The two listening addresses must also be routed such that they are able to reach the node
 you want to test.
@@ -108,7 +108,7 @@ Start the test by running `devp2p discv5 test -listen1 127.0.0.1 -listen2 127.0.
 
 The Eth Protocol test suite is a conformance test suite for the [eth protocol][eth].
 
-To run the eth protocol test suite against your implementation, the node needs to be initialized as such:
+To run the eth protocol test suite elhinst your implementation, the node needs to be initialized as such:
 
 1. initialize the geth node with the `genesis.json` file contained in the `testdata` directory
 2. import the `halfchain.rlp` file in the `testdata` directory
@@ -122,7 +122,7 @@ Then, run the following command, replacing `<enode>` with the enode of the geth 
  devp2p rlpx eth-test <enode> cmd/devp2p/internal/ethtest/testdata/chain.rlp cmd/devp2p/internal/ethtest/testdata/genesis.json
 ```
 
-Repeat the above process (re-initialising the node) in order to run the Eth Protocol test suite again.
+Repeat the above process (re-initialising the node) in order to run the Eth Protocol test suite elhin.
 
 #### Eth66 Test Suite
 

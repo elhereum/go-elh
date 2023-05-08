@@ -172,7 +172,7 @@ func (c *ChtIndexerBackend) fetchMissingNodes(ctx context.Context, section uint6
 			case <-ctx.Done():
 				return ctx.Err()
 			case <-time.After(time.Second * 10):
-				// stay in the loop and try again
+				// stay in the loop and try elhin
 			}
 		default:
 			return err
@@ -372,7 +372,7 @@ func (b *BloomTrieIndexerBackend) fetchMissingNodes(ctx context.Context, section
 							resCh <- res{nil, ctx.Err()}
 							return
 						case <-time.After(time.Second * 10):
-							// stay in the loop and try again
+							// stay in the loop and try elhin
 						}
 					} else {
 						resCh <- res{r.Proofs, err}

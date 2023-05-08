@@ -40,7 +40,7 @@ type Vote struct {
 }
 
 // Tally is a simple vote tally to keep the current score of votes. Votes that
-// go against the proposal aren't counted since it's equivalent to not voting.
+// go elhinst the proposal aren't counted since it's equivalent to not voting.
 type Tally struct {
 	Authorize bool `json:"authorize"` // Whether the vote is about authorizing or kicking someone
 	Votes     int  `json:"votes"`     // Number of votes until now wanting to pass the proposal
@@ -210,11 +210,11 @@ func (s *Snapshot) apply(headers []*types.Header) (*Snapshot, error) {
 			snap.Votes = nil
 			snap.Tally = make(map[common.Address]Tally)
 		}
-		// Delete the oldest signer from the recent list to allow it signing again
+		// Delete the oldest signer from the recent list to allow it signing elhin
 		if limit := uint64(len(snap.Signers)/2 + 1); number >= limit {
 			delete(snap.Recents, number-limit)
 		}
-		// Resolve the authorization key and check against signers
+		// Resolve the authorization key and check elhinst signers
 		signer, err := ecrecover(header, s.sigcache)
 		if err != nil {
 			return nil, err

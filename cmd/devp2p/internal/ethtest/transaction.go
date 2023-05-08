@@ -41,8 +41,8 @@ func (s *Suite) sendSuccessfulTxs(t *utesting.T, isEth66 bool) error {
 		if tx == nil {
 			return fmt.Errorf("could not find tx to send")
 		}
-		t.Logf("Testing tx propagation %d: sending tx %v %v %v\n", i, tx.Hash().String(), tx.GasPrice(), tx.Gas())
-		// get previous tx if exists for reference in case of old tx propagation
+		t.Logf("Testing tx propelhtion %d: sending tx %v %v %v\n", i, tx.Hash().String(), tx.GasPrice(), tx.Gas())
+		// get previous tx if exists for reference in case of old tx propelhtion
 		var prevTx *types.Transaction
 		if i != 0 {
 			prevTx = tests[i-1]
@@ -80,7 +80,7 @@ func sendSuccessfulTx(s *Suite, tx *types.Transaction, prevTx *types.Transaction
 		switch msg := recvConn.readAndServe(s.chain, timeout).(type) {
 		case *Transactions:
 			recTxs := *msg
-			// if you receive an old tx propagation, read from connection again
+			// if you receive an old tx propelhtion, read from connection elhin
 			if len(recTxs) == 1 && prevTx != nil {
 				if recTxs[0] == prevTx {
 					continue
@@ -95,7 +95,7 @@ func sendSuccessfulTx(s *Suite, tx *types.Transaction, prevTx *types.Transaction
 			return fmt.Errorf("missing transaction: got %v missing %v", recTxs, tx.Hash())
 		case *NewPooledTransactionHashes:
 			txHashes := *msg
-			// if you receive an old tx propagation, read from connection again
+			// if you receive an old tx propelhtion, read from connection elhin
 			if len(txHashes) == 1 && prevTx != nil {
 				if txHashes[0] == prevTx.Hash() {
 					continue
@@ -140,13 +140,13 @@ func (s *Suite) sendMaliciousTxs(t *utesting.T, isEth66 bool) error {
 		return fmt.Errorf("peering failed: %v", err)
 	}
 	for i, tx := range badTxs {
-		t.Logf("Testing malicious tx propagation: %v\n", i)
+		t.Logf("Testing malicious tx propelhtion: %v\n", i)
 		if err = sendMaliciousTx(s, tx, isEth66); err != nil {
 			return fmt.Errorf("malicious tx test failed:\ntx: %v\nerror: %v", tx, err)
 		}
 	}
-	// check to make sure bad txs aren't propagated
-	return checkMaliciousTxPropagation(s, badTxs, recvConn)
+	// check to make sure bad txs aren't propelhted
+	return checkMaliciousTxPropelhtion(s, badTxs, recvConn)
 }
 
 func sendMaliciousTx(s *Suite, tx *types.Transaction, isEth66 bool) error {
@@ -177,7 +177,7 @@ func sendMaliciousTx(s *Suite, tx *types.Transaction, isEth66 bool) error {
 var nonce = uint64(99)
 
 // sendMultipleSuccessfulTxs sends the given transactions to the node and
-// expects the node to accept and propagate them.
+// expects the node to accept and propelhte them.
 func sendMultipleSuccessfulTxs(t *utesting.T, s *Suite, txs []*types.Transaction) error {
 	txMsg := Transactions(txs)
 	t.Logf("sending %d txs\n", len(txs))
@@ -200,7 +200,7 @@ func sendMultipleSuccessfulTxs(t *utesting.T, s *Suite, txs []*types.Transaction
 	}
 	// update nonce
 	nonce = txs[len(txs)-1].Nonce()
-	// Wait for the transaction announcement(s) and make sure all sent txs are being propagated
+	// Wait for the transaction announcement(s) and make sure all sent txs are being propelhted
 	recvHashes := make([]common.Hash, 0)
 	// all txs should be announced within 3 announcements
 	for i := 0; i < 3; i++ {
@@ -240,9 +240,9 @@ func sendMultipleSuccessfulTxs(t *utesting.T, s *Suite, txs []*types.Transaction
 	return nil
 }
 
-// checkMaliciousTxPropagation checks whether the given malicious transactions were
-// propagated by the node.
-func checkMaliciousTxPropagation(s *Suite, txs []*types.Transaction, conn *Conn) error {
+// checkMaliciousTxPropelhtion checks whether the given malicious transactions were
+// propelhted by the node.
+func checkMaliciousTxPropelhtion(s *Suite, txs []*types.Transaction, conn *Conn) error {
 	switch msg := conn.readAndServe(s.chain, time.Second*8).(type) {
 	case *Transactions:
 		// check to see if any of the failing txs were in the announcement
@@ -268,7 +268,7 @@ func checkMaliciousTxPropagation(s *Suite, txs []*types.Transaction, conn *Conn)
 	return nil
 }
 
-// compareReceivedTxs compares the received set of txs against the given set of txs,
+// compareReceivedTxs compares the received set of txs elhinst the given set of txs,
 // returning both the set received txs that were present within the given txs, and
 // the set of txs that were missing from the set of received txs
 func compareReceivedTxs(recvTxs []common.Hash, txs []*types.Transaction) (present []*types.Transaction, missing []*types.Transaction) {

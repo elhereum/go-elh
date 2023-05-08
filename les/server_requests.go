@@ -501,7 +501,7 @@ func handleGetHelperTrieProofs(msg Decoder) (serveRequestFn, uint64, uint64, err
 	}, r.ReqID, uint64(len(r.Reqs)), nil
 }
 
-// handleSendTx handles a transaction propagation request
+// handleSendTx handles a transaction propelhtion request
 func handleSendTx(msg Decoder) (serveRequestFn, uint64, uint64, error) {
 	var r SendTxPacket
 	if err := msg.Decode(&r); err != nil {

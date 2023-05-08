@@ -104,7 +104,7 @@ with a `Step` which has the following fields:
     given node meets the expectation
 
 * `Trigger` - a channel that receives node IDs which then trigger a check
-    of the expectation function to be performed against that node
+    of the expectation function to be performed elhinst that node
 
 As a concrete example, consider a simulated network of Ethereum nodes. An
 `Action` could be the sending of a transaction, `Expect` it being included in

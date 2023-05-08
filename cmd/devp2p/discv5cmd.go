@@ -57,7 +57,7 @@ var (
 	}
 	discv5TestCommand = cli.Command{
 		Name:   "test",
-		Usage:  "Runs protocol tests against a node",
+		Usage:  "Runs protocol tests elhinst a node",
 		Action: discv5Test,
 		Flags: []cli.Flag{
 			testPatternFlag,

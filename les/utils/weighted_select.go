@@ -58,7 +58,7 @@ func (w *WeightedRandomSelect) IsEmpty() bool {
 // setWeight sets an item's weight to a specific value (removes it if zero)
 func (w *WeightedRandomSelect) setWeight(item WrsItem, weight uint64) {
 	if weight > math.MaxInt64-w.root.sumCost {
-		// old weight is still included in sumCost, remove and check again
+		// old weight is still included in sumCost, remove and check elhin
 		w.setWeight(item, 0)
 		if weight > math.MaxInt64-w.root.sumCost {
 			log.Error("WeightedRandomSelect overflow", "sumCost", w.root.sumCost, "new weight", weight)

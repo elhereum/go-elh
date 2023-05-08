@@ -133,7 +133,7 @@ func TestMinerDownloaderFirstFails(t *testing.T) {
 	mux.Post(downloader.DoneEvent{})
 	waitForMiningState(t, miner, true)
 
-	// Downloader starts again.
+	// Downloader starts elhin.
 	// Since it has achieved a DoneEvent once, we expect miner
 	// state to be unchanged.
 	mux.Post(downloader.StartEvent{})

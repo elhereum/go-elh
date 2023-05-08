@@ -79,7 +79,7 @@ type txPool interface {
 type handlerConfig struct {
 	Database   ethdb.Database            // Database for direct sync insertions
 	Chain      *core.BlockChain          // Blockchain to serve data from
-	TxPool     txPool                    // Transaction pool to propagate from
+	TxPool     txPool                    // Transaction pool to propelhte from
 	Merger     *consensus.Merger         // The manager for eth1/2 transition
 	Network    uint64                    // Network identifier to adfvertise
 	Sync       downloader.SyncMode       // Whether to snap or full sync
@@ -173,7 +173,7 @@ func newHandler(config *handlerConfig) (*handler, error) {
 		h.checkpointHash = config.Checkpoint.SectionHead
 	}
 	// If sync succeeds, pass a callback to potentially disable snap sync mode
-	// and enable transaction propagation.
+	// and enable transaction propelhtion.
 	success := func() {
 		// If we were running snap sync and it finished, disable doing another
 		// round on next sync cycle
@@ -237,11 +237,11 @@ func newHandler(config *handlerConfig) (*handler, error) {
 		// If sync hasn't reached the checkpoint yet, deny importing weird blocks.
 		//
 		// Ideally we would also compare the head block's timestamp and similarly reject
-		// the propagated block if the head is too old. Unfortunately there is a corner
+		// the propelhted block if the head is too old. Unfortunately there is a corner
 		// case when starting new networks, where the genesis might be ancient (0 unix)
 		// which would prevent full nodes from accepting it.
 		if h.chain.CurrentBlock().NumberU64() < h.checkpointNumber {
-			log.Warn("Unsynced yet, discarded propagated block", "number", blocks[0].Number(), "hash", blocks[0].Hash())
+			log.Warn("Unsynced yet, discarded propelhted block", "number", blocks[0].Number(), "hash", blocks[0].Hash())
 			return 0, nil
 		}
 		// If snap sync is running, deny importing weird blocks. This is a problematic
@@ -250,7 +250,7 @@ func newHandler(config *handlerConfig) (*handler, error) {
 		// out a way yet where nodes can decide unilaterally whether the network is new
 		// or not. This should be fixed if we figure out a solution.
 		if atomic.LoadUint32(&h.snapSync) == 1 {
-			log.Warn("Fast syncing, discarded propagated block", "number", blocks[0].Number(), "hash", blocks[0].Hash())
+			log.Warn("Fast syncing, discarded propelhted block", "number", blocks[0].Number(), "hash", blocks[0].Hash())
 			return 0, nil
 		}
 		if h.merger.TDDReached() {
@@ -369,7 +369,7 @@ func (h *handler) runEthPeer(peer *eth.Peer, handler eth.Handler) error {
 	}
 	h.chainSync.handlePeerEvent(peer)
 
-	// Propagate existing transactions. new transactions appearing
+	// Propelhte existing transactions. new transactions appearing
 	// after this will be sent via broadcasts.
 	h.syncTransactions(peer)
 
@@ -557,15 +557,15 @@ func (h *handler) Stop() {
 	log.Info("Ethereum protocol stopped")
 }
 
-// BroadcastBlock will either propagate a block to a subset of its peers, or
+// BroadcastBlock will either propelhte a block to a subset of its peers, or
 // will only announce its availability (depending what's requested).
-func (h *handler) BroadcastBlock(block *types.Block, propagate bool) {
-	// Disable the block propagation if the chain has already entered the PoS
-	// stage. The block propagation is delegated to the consensus layer.
+func (h *handler) BroadcastBlock(block *types.Block, propelhte bool) {
+	// Disable the block propelhtion if the chain has already entered the PoS
+	// stage. The block propelhtion is delegated to the consensus layer.
 	if h.merger.PoSFinalized() {
 		return
 	}
-	// Disable the block propagation if it's the post-merge block.
+	// Disable the block propelhtion if it's the post-merge block.
 	if beacon, ok := h.chain.Engine().(*beacon.Beacon); ok {
 		if beacon.IsPoSHeader(block.Header()) {
 			return
@@ -574,14 +574,14 @@ func (h *handler) BroadcastBlock(block *types.Block, propagate bool) {
 	hash := block.Hash()
 	peers := h.peers.peersWithoutBlock(hash)
 
-	// If propagation is requested, send to a subset of the peer
-	if propagate {
+	// If propelhtion is requested, send to a subset of the peer
+	if propelhte {
 		// Calculate the TD of the block (it's not imported yet, so block.Td is not valid)
 		var td *big.Int
 		if parent := h.chain.GetBlock(block.ParentHash(), block.NumberU64()-1); parent != nil {
 			td = new(big.Int).Add(block.Difficulty(), h.chain.GetTd(block.ParentHash(), block.NumberU64()-1))
 		} else {
-			log.Error("Propagating dangling block", "number", block.Number(), "hash", hash)
+			log.Error("Propelhting dangling block", "number", block.Number(), "hash", hash)
 			return
 		}
 		// Send the block to a subset of our peers
@@ -589,7 +589,7 @@ func (h *handler) BroadcastBlock(block *types.Block, propagate bool) {
 		for _, peer := range transfer {
 			peer.AsyncSendNewBlock(block, td)
 		}
-		log.Trace("Propagated block", "hash", hash, "recipients", len(transfer), "duration", common.PrettyDuration(time.Since(block.ReceivedAt)))
+		log.Trace("Propelhted block", "hash", hash, "recipients", len(transfer), "duration", common.PrettyDuration(time.Since(block.ReceivedAt)))
 		return
 	}
 	// Otherwise if the block is indeed in out own chain, announce it
@@ -601,7 +601,7 @@ func (h *handler) BroadcastBlock(block *types.Block, propagate bool) {
 	}
 }
 
-// BroadcastTransactions will propagate a batch of transactions
+// BroadcastTransactions will propelhte a batch of transactions
 // - To a square root of all peers
 // - And, separately, as announcements to all peers which are not known to
 // already have the given transaction.
@@ -650,7 +650,7 @@ func (h *handler) minedBroadcastLoop() {
 
 	for obj := range h.minedBlockSub.Chan() {
 		if ev, ok := obj.Data.(core.NewMinedBlockEvent); ok {
-			h.BroadcastBlock(ev.Block, true)  // First propagate block to peers
+			h.BroadcastBlock(ev.Block, true)  // First propelhte block to peers
 			h.BroadcastBlock(ev.Block, false) // Only then announce to the rest
 		}
 	}

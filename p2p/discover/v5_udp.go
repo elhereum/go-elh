@@ -38,7 +38,7 @@ import (
 )
 
 const (
-	lookupRequestLimit      = 3  // max requests against a single node during lookup
+	lookupRequestLimit      = 3  // max requests elhinst a single node during lookup
 	findnodeResultLimit     = 16 // applies in FINDNODE handler
 	totalNodesResponseLimit = 5  // applies in waitForNodes
 	nodesResponseItemLimit  = 3  // applies in sendNodes
@@ -99,7 +99,7 @@ type UDPv5 struct {
 // TalkRequestHandler callback processes a talk request and optionally returns a reply
 type TalkRequestHandler func(enode.ID, *net.UDPAddr, []byte) []byte
 
-// callV5 represents a remote procedure call against another node.
+// callV5 represents a remote procedure call elhinst another node.
 type callV5 struct {
 	node         *enode.Node
 	packet       v5wire.Packet
@@ -296,7 +296,7 @@ func (t *UDPv5) newLookup(ctx context.Context, target enode.ID) *lookup {
 	})
 }
 
-// lookupWorker performs FINDNODE calls against a single node during lookup.
+// lookupWorker performs FINDNODE calls elhinst a single node during lookup.
 func (t *UDPv5) lookupWorker(destNode *node, target enode.ID) ([]*node, error) {
 	var (
 		dists = lookupDistances(target, destNode.ID())

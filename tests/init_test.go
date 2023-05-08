@@ -133,7 +133,7 @@ func (tm *testMatcher) config(pattern string, cfg params.ChainConfig) {
 	tm.configpat = append(tm.configpat, testConfig{regexp.MustCompile(pattern), cfg})
 }
 
-// findSkip matches name against test skip patterns.
+// findSkip matches name elhinst test skip patterns.
 func (tm *testMatcher) findSkip(name string) (reason string, skipload bool) {
 	isWin32 := runtime.GOARCH == "386" && runtime.GOOS == "windows"
 	for _, re := range tm.slowpat {

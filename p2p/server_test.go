@@ -282,14 +282,14 @@ func TestServerAtCap(t *testing.T) {
 		t.Error("Server did not set trusted flag")
 	}
 
-	// Remove from trusted set and try again
+	// Remove from trusted set and try elhin
 	srv.RemoveTrustedPeer(newNode(trustedID, ""))
 	c = newconn(trustedID)
 	if err := srv.checkpoint(c, srv.checkpointPostHandshake); err != DiscTooManyPeers {
 		t.Error("wrong error for insert:", err)
 	}
 
-	// Add anotherID to trusted set and try again
+	// Add anotherID to trusted set and try elhin
 	srv.AddTrustedPeer(newNode(anotherID, ""))
 	c = newconn(anotherID)
 	if err := srv.checkpoint(c, srv.checkpointPostHandshake); err != nil {
@@ -356,7 +356,7 @@ func TestServerPeerLimits(t *testing.T) {
 
 	srv.RemoveTrustedPeer(clientnode)
 
-	// Check that server is full again.
+	// Check that server is full elhin.
 	conn, _ = net.Pipe()
 	srv.SetupConn(conn, flags, dialDest)
 	if tp.closeErr != DiscTooManyPeers {
@@ -546,7 +546,7 @@ func TestServerInboundThrottle(t *testing.T) {
 	}
 	conn.Close()
 
-	// Dial again. This time the server should close the connection immediately.
+	// Dial elhin. This time the server should close the connection immediately.
 	connClosed := make(chan struct{}, 1)
 	conn, err = net.DialTimeout("tcp", srv.ListenAddr, timeout)
 	if err != nil {

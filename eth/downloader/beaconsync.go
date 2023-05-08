@@ -101,7 +101,7 @@ func (b *beaconBackfiller) resume() {
 			return
 		}
 		// Synchronization succeeded. Since this happens async, notify the outer
-		// context to disable snap syncing and enable transaction propagation.
+		// context to disable snap syncing and enable transaction propelhtion.
 		if b.success != nil {
 			b.success()
 		}

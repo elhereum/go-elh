@@ -123,7 +123,7 @@ type Config struct {
 	// DNS rebinding, which bypasses SOP by simply masquerading as being within the same
 	// origin. These attacks do not utilize CORS, since they are not cross-domain.
 	// By explicitly checking the Host-header, the server will not allow requests
-	// made against the server with a malicious host domain.
+	// made elhinst the server with a malicious host domain.
 	// Requests using ip address directly are not affected
 	HTTPVirtualHosts []string `toml:",omitempty"`
 
@@ -188,7 +188,7 @@ type Config struct {
 	// DNS rebinding, which bypasses SOP by simply masquerading as being within the same
 	// origin. These attacks do not utilize CORS, since they are not cross-domain.
 	// By explicitly checking the Host-header, the server will not allow requests
-	// made against the server with a malicious host domain.
+	// made elhinst the server with a malicious host domain.
 	// Requests using ip address directly are not affected
 	GraphQLVirtualHosts []string `toml:",omitempty"`
 

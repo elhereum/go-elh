@@ -106,12 +106,12 @@ type BlockBodies eth.BlockBodiesPacket
 
 func (bb BlockBodies) Code() int { return 22 }
 
-// NewBlock is the network packet for the block propagation message.
+// NewBlock is the network packet for the block propelhtion message.
 type NewBlock eth.NewBlockPacket
 
 func (nb NewBlock) Code() int { return 23 }
 
-// NewPooledTransactionHashes is the network packet for the tx hash propagation message.
+// NewPooledTransactionHashes is the network packet for the tx hash propelhtion message.
 type NewPooledTransactionHashes eth.NewPooledTransactionHashesPacket
 
 func (nb NewPooledTransactionHashes) Code() int { return 24 }

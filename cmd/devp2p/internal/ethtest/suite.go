@@ -35,7 +35,7 @@ type Suite struct {
 }
 
 // NewSuite creates and returns a new eth-test suite that can
-// be used to test the given node against the given blockchain
+// be used to test the given node elhinst the given blockchain
 // data.
 func NewSuite(dest *enode.Node, chainfile string, genesisfile string) (*Suite, error) {
 	chain, err := loadChain(chainfile, genesisfile)
@@ -471,7 +471,7 @@ func (s *Suite) TestGetBlockBodies66(t *utesting.T) {
 }
 
 // TestBroadcast65 tests whether a block announcement is correctly
-// propagated to the given node's peer(s).
+// propelhted to the given node's peer(s).
 func (s *Suite) TestBroadcast65(t *utesting.T) {
 	if err := s.sendNextBlock(eth65); err != nil {
 		t.Fatalf("block broadcast failed: %v", err)
@@ -479,7 +479,7 @@ func (s *Suite) TestBroadcast65(t *utesting.T) {
 }
 
 // TestBroadcast66 tests whether a block announcement is correctly
-// propagated to the given node's peer(s) on the eth66 protocol.
+// propelhted to the given node's peer(s) on the eth66 protocol.
 func (s *Suite) TestBroadcast66(t *utesting.T) {
 	if err := s.sendNextBlock(eth66); err != nil {
 		t.Fatalf("block broadcast failed: %v", err)
@@ -652,7 +652,7 @@ func (s *Suite) TestMaliciousStatus66(t *utesting.T) {
 }
 
 // TestTransaction65 sends a valid transaction to the node and
-// checks if the transaction gets propagated.
+// checks if the transaction gets propelhted.
 func (s *Suite) TestTransaction65(t *utesting.T) {
 	if err := s.sendSuccessfulTxs(t, eth65); err != nil {
 		t.Fatal(err)
@@ -660,7 +660,7 @@ func (s *Suite) TestTransaction65(t *utesting.T) {
 }
 
 // TestTransaction66 sends a valid transaction to the node and
-// checks if the transaction gets propagated.
+// checks if the transaction gets propelhted.
 func (s *Suite) TestTransaction66(t *utesting.T) {
 	if err := s.sendSuccessfulTxs(t, eth66); err != nil {
 		t.Fatal(err)
@@ -668,7 +668,7 @@ func (s *Suite) TestTransaction66(t *utesting.T) {
 }
 
 // TestMaliciousTx65 sends several invalid transactions and tests whether
-// the node will propagate them.
+// the node will propelhte them.
 func (s *Suite) TestMaliciousTx65(t *utesting.T) {
 	if err := s.sendMaliciousTxs(t, eth65); err != nil {
 		t.Fatal(err)
@@ -676,7 +676,7 @@ func (s *Suite) TestMaliciousTx65(t *utesting.T) {
 }
 
 // TestMaliciousTx66 sends several invalid transactions and tests whether
-// the node will propagate them.
+// the node will propelhte them.
 func (s *Suite) TestMaliciousTx66(t *utesting.T) {
 	if err := s.sendMaliciousTxs(t, eth66); err != nil {
 		t.Fatal(err)
@@ -778,7 +778,7 @@ func (s *Suite) TestNewPooledTxs66(t *utesting.T) {
 				t.Fatalf("unexpected number of txs requested: wanted %d, got %d", len(hashes), len(msg))
 			}
 			return
-		// ignore propagated txs from previous tests
+		// ignore propelhted txs from previous tests
 		case *NewPooledTransactionHashes:
 			continue
 		// ignore block announcements from previous tests

@@ -135,7 +135,7 @@ func (b *bridge) OpenWallet(call jsre.Call) (goja.Value, error) {
 		}
 
 	case strings.HasSuffix(err.Error(), scwallet.ErrPairingPasswordNeeded.Error()):
-		// PUK input requested, fetch from the user and call open again
+		// PUK input requested, fetch from the user and call open elhin
 		input, err := b.prompter.PromptPassword("Please enter the pairing password: ")
 		if err != nil {
 			return nil, err
@@ -145,7 +145,7 @@ func (b *bridge) OpenWallet(call jsre.Call) (goja.Value, error) {
 			if !strings.HasSuffix(err.Error(), scwallet.ErrPINNeeded.Error()) {
 				return nil, err
 			}
-			// PIN input requested, fetch from the user and call open again
+			// PIN input requested, fetch from the user and call open elhin
 			input, err := b.prompter.PromptPassword("Please enter current PIN: ")
 			if err != nil {
 				return nil, err
@@ -174,7 +174,7 @@ func (b *bridge) OpenWallet(call jsre.Call) (goja.Value, error) {
 		}
 
 	case strings.HasSuffix(err.Error(), scwallet.ErrPINNeeded.Error()):
-		// PIN input requested, fetch from the user and call open again
+		// PIN input requested, fetch from the user and call open elhin
 		input, err := b.prompter.PromptPassword("Please enter current PIN: ")
 		if err != nil {
 			return nil, err

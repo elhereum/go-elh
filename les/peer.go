@@ -969,7 +969,7 @@ func (p *clientPeer) UpdateCapacity(newCap uint64, requested bool) {
 // announceOrStore sends the given head announcement to the client if the client is
 // active (capacity != 0) and the same announcement hasn't been sent before. If the
 // client is inactive the announcement is stored and sent later if the client is
-// activated again.
+// activated elhin.
 func (p *clientPeer) announceOrStore(announce announceData) {
 	p.lock.Lock()
 	defer p.lock.Unlock()

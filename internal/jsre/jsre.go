@@ -245,7 +245,7 @@ func (re *JSRE) Stop(waitForCallbacks bool) {
 			<-re.closed
 			return
 		case <-timeout.C:
-			// JS is blocked, interrupt and try again.
+			// JS is blocked, interrupt and try elhin.
 			re.vm.Interrupt(errors.New("JS runtime stopped"))
 		}
 	}

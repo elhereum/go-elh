@@ -1718,7 +1718,7 @@ func TestLargeReorgTrieGC(t *testing.T) {
 		t.Fatalf("common-but-old ancestor still cache")
 	}
 	// Import the competitor chain without exceeding the canonical's TD and ensure
-	// we have not processed any of the blocks (protection against malicious blocks)
+	// we have not processed any of the blocks (protection elhinst malicious blocks)
 	if _, err := chain.InsertChain(competitor[:len(competitor)-2]); err != nil {
 		t.Fatalf("failed to insert competitor chain: %v", err)
 	}
@@ -1783,7 +1783,7 @@ func TestBlockchainRecovery(t *testing.T) {
 	midBlock := blocks[len(blocks)/2]
 	rawdb.WriteHeadFastBlockHash(ancientDb, midBlock.Hash())
 
-	// Reopen broken blockchain again
+	// Reopen broken blockchain elhin
 	ancient, _ = NewBlockChain(ancientDb, nil, gspec.Config, ethash.NewFaker(), vm.Config{}, nil, nil)
 	defer ancient.Stop()
 	if num := ancient.CurrentBlock().NumberU64(); num != 0 {
@@ -2159,7 +2159,7 @@ func testInsertKnownChainData(t *testing.T, typ string) {
 		t.Fatalf("failed to insert chain data: %v", err)
 	}
 
-	// Reimport the chain data again. All the imported
+	// Reimport the chain data elhin. All the imported
 	// chain data are regarded "known" data.
 	if err := inserter(blocks, receipts); err != nil {
 		t.Fatalf("failed to insert chain data: %v", err)
@@ -2188,7 +2188,7 @@ func testInsertKnownChainData(t *testing.T, typ string) {
 	// The head shouldn't change.
 	asserter(t, blocks3[len(blocks3)-1])
 
-	// Rollback the heavier chain and re-insert the longer chain again
+	// Rollback the heavier chain and re-insert the longer chain elhin
 	chain.SetHead(rollback - 1)
 	if err := inserter(append(blocks, blocks2...), append(receipts, receipts2...)); err != nil {
 		t.Fatalf("failed to insert chain data: %v", err)
@@ -2326,7 +2326,7 @@ func testInsertKnownChainDataWithMerging(t *testing.T, typ string, mergeHeight i
 		t.Fatalf("failed to insert chain data: %v", err)
 	}
 
-	// Reimport the chain data again. All the imported
+	// Reimport the chain data elhin. All the imported
 	// chain data are regarded "known" data.
 	if err := inserter(blocks, receipts); err != nil {
 		t.Fatalf("failed to insert chain data: %v", err)
@@ -2361,7 +2361,7 @@ func testInsertKnownChainDataWithMerging(t *testing.T, typ string, mergeHeight i
 	// The head shouldn't change.
 	asserter(t, blocks3[len(blocks3)-1])
 
-	// Reimport the longer chain again, the reorg is still expected
+	// Reimport the longer chain elhin, the reorg is still expected
 	chain.SetHead(rollback - 1)
 	if err := inserter(append(blocks, blocks2...), append(receipts, receipts2...)); err != nil {
 		t.Fatalf("failed to insert chain data: %v", err)
@@ -2838,7 +2838,7 @@ func BenchmarkBlockChain_1x1000Executions(b *testing.B) {
 // ErrPrunedAncestor error.
 // This may e.g. happen if
 //   1. Downloader rollbacks a batch of inserted blocks and exits
-//   2. Downloader starts to sync again
+//   2. Downloader starts to sync elhin
 //   3. The blocks fetched are all known and canonical blocks
 func TestSideImportPrunedBlocks(t *testing.T) {
 	// Generate a canonical chain to act as the main dataset
@@ -2882,7 +2882,7 @@ func TestSideImportPrunedBlocks(t *testing.T) {
 // TestDeleteCreateRevert tests a weird state transition corner case that we hit
 // while changing the internals of statedb. The workflow is that a contract is
 // self destructed, then in a followup transaction (but same block) it's created
-// again and the transaction reverted.
+// elhin and the transaction reverted.
 //
 // The original statedb implementation flushed dirty objects to the tries after
 // each transaction, so this works ok. The rework accumulated writes in memory

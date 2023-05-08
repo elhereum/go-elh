@@ -75,7 +75,7 @@ func TestStateProcessorErrors(t *testing.T) {
 		}), signer, key1)
 		return tx
 	}
-	{ // Tests against a 'recent' chain definition
+	{ // Tests elhinst a 'recent' chain definition
 		var (
 			db    = rawdb.NewMemoryDatabase()
 			gspec = &Genesis{

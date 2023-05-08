@@ -278,7 +278,7 @@ func (snaptest *crashSnapshotTest) test(t *testing.T) {
 // - have a complete snapshot
 // - restart without enabling the snapshot
 // - insert a few blocks
-// - restart with enabling the snapshot again
+// - restart with enabling the snapshot elhin
 type gappedSnapshotTest struct {
 	snapshotTestBasic
 	gapped int // Number of blocks to insert without enabling snapshot
@@ -352,7 +352,7 @@ func (snaptest *setHeadSnapshotTest) test(t *testing.T) {
 // - insert more blocks with enabling the snapshot
 // - commit the snapshot
 // - crash
-// - restart again
+// - restart elhin
 type restartCrashSnapshotTest struct {
 	snapshotTestBasic
 	newBlocks int
@@ -397,7 +397,7 @@ func (snaptest *restartCrashSnapshotTest) test(t *testing.T) {
 // wipeCrashSnapshotTest is the test type used to test this scenario:
 // - have a complete snapshot
 // - restart, insert more blocks without enabling the snapshot
-// - restart again with enabling the snapshot
+// - restart elhin with enabling the snapshot
 // - crash
 type wipeCrashSnapshotTest struct {
 	snapshotTestBasic
@@ -604,7 +604,7 @@ func TestHighCommitCrashWithNewSnapshot(t *testing.T) {
 }
 
 // Tests a Geth was running with snapshot enabled. Then restarts without
-// enabling snapshot and after that re-enable the snapshot again. In this
+// enabling snapshot and after that re-enable the snapshot elhin. In this
 // case the snapshot should be rebuilt with latest chain head.
 func TestGappedNewSnapshot(t *testing.T) {
 	// Chain:

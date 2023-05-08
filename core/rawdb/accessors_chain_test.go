@@ -222,7 +222,7 @@ func TestBadBlockStorage(t *testing.T) {
 	})
 	WriteBadBlock(db, blockTwo)
 
-	// Write the block one again, should be filtered out.
+	// Write the block one elhin, should be filtered out.
 	WriteBadBlock(db, block)
 	badBlocks := ReadAllBadBlocks(db)
 	if len(badBlocks) != 2 {

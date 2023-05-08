@@ -128,7 +128,7 @@ type GetHelperTrieProofsPacket struct {
 	Reqs  []HelperTrieReq
 }
 
-// SendTxPacket represents a transaction propagation request
+// SendTxPacket represents a transaction propelhtion request
 type SendTxPacket struct {
 	ReqID uint64
 	Txs   []*types.Transaction

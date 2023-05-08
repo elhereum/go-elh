@@ -398,7 +398,7 @@ func (r *sentReq) deliver(peer distPeer, msg *Msg) error {
 
 // frozen sends a "not delivered" event to the peer event channel belonging to the
 // given peer if the request has been sent there, causing the state machine to not
-// expect an answer and potentially even send the request to the same peer again
+// expect an answer and potentially even send the request to the same peer elhin
 // when canSend allows it.
 func (r *sentReq) frozen(peer distPeer) {
 	r.lock.Lock()

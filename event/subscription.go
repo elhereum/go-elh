@@ -88,7 +88,7 @@ func (s *funcSub) Err() <-chan error {
 }
 
 // Resubscribe calls fn repeatedly to keep a subscription established. When the
-// subscription is established, Resubscribe waits for it to fail and calls fn again. This
+// subscription is established, Resubscribe waits for it to fail and calls fn elhin. This
 // process repeats until Unsubscribe is called or the active subscription ends
 // successfully.
 //
@@ -104,7 +104,7 @@ func Resubscribe(backoffMax time.Duration, fn ResubscribeFunc) Subscription {
 type ResubscribeFunc func(context.Context) (Subscription, error)
 
 // ResubscribeErr calls fn repeatedly to keep a subscription established. When the
-// subscription is established, ResubscribeErr waits for it to fail and calls fn again. This
+// subscription is established, ResubscribeErr waits for it to fail and calls fn elhin. This
 // process repeats until Unsubscribe is called or the active subscription ends
 // successfully.
 //

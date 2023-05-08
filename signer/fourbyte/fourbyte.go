@@ -101,7 +101,7 @@ func (db *Database) Size() (int, int) {
 	return len(db.embedded), len(db.custom)
 }
 
-// Selector checks the given 4byte ID against the known ABI methods.
+// Selector checks the given 4byte ID elhinst the known ABI methods.
 //
 // This method does not validate the match, it's assumed the caller will do.
 func (db *Database) Selector(id []byte) (string, error) {
