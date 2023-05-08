@@ -4,7 +4,7 @@ Based on the go-ethereum v1.10.17 source code.
 
 ## Building the source
 
-![build](https://github.com/elhereum/blob/main/go-elh/elh.png)
+![build](https://github.com/elhereum/go-elh/blob/main/elh.png)
 ![build](https://github.com/elhereum/go-elh/blob/main/elhereum.png)
 
 Building `geth` requires both a Go (version 1.14 or later) and a C compiler. You can install
