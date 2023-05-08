@@ -1,0 +1,33 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.18.1'
+
+      - name: Build project
+        run: |
+          go build -o output-${{ matrix.os }} ./cmd/geth
+          strip output-${{ matrix.os }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: output-${{ matrix.os }}
+          path: output-${{ matrix.os }}
