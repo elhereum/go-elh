@@ -1,9 +1,9 @@
 on:
   push:
     branches:
-    - 'main'
+      - 'main'
     tags:
-    - 'v*'
+      - 'v*'
 
 jobs:
   release:
@@ -25,10 +25,17 @@ jobs:
           strip build/bin/geth
           mv build/bin/geth build/bin/geth-linux-amd64
 
+      - name: Generate tag
+        if: startsWith(github.ref, 'refs/heads/')
+        id: generate_tag
+        run: |
+          echo "RELEASE_VERSION=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+
       - name: release
         uses: softprops/action-gh-release@v1
         with:
           files: build/bin/geth-linux-amd64
+          tag_name: ${{ startsWith(github.ref, 'refs/heads/') && env.RELEASE_VERSION || github.ref_name }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -51,7 +58,4 @@ jobs:
         with:
           context: .
           platforms: linux/amd64,linux/arm64
-          push: true
-          tags: |
-            elhereum/go-elh:latest
-            elhereum/go-elh:${{ env.IMAGE_VERSION }}
+         
