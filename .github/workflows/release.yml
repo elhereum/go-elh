@@ -36,6 +36,7 @@ jobs:
         with:
           files: build/bin/geth-linux-amd64
           tag_name: ${{ startsWith(github.ref, 'refs/heads/') && env.RELEASE_VERSION || github.ref_name }}
+          token: ${{ secrets.GH_PAT }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
