@@ -18,3 +18,7 @@ or, to build the full suite of utilities:
 ```shell
 make all
 ```
+or windows
+```
+go build ./cmd/geth
+```

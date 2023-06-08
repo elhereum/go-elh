@@ -155,41 +155,45 @@ func makeConfigNode(ctx *cli.Context) (*node.Node, gethConfig) {
 
 // makeFullNode loads geth configuration and creates the Ethereum backend.
 func makeFullNode(ctx *cli.Context) (*node.Node, ethapi.Backend) {
-	stack, cfg := makeConfigNode(ctx)
-	if ctx.GlobalIsSet(utils.OverrideArrowGlacierFlag.Name) {
-		cfg.Eth.OverrideArrowGlacier = new(big.Int).SetUint64(ctx.GlobalUint64(utils.OverrideArrowGlacierFlag.Name))
-	}
-	if ctx.GlobalIsSet(utils.OverrideTerminalTotalDifficulty.Name) {
-		cfg.Eth.OverrideTerminalTotalDifficulty = new(big.Int).SetUint64(ctx.GlobalUint64(utils.OverrideTerminalTotalDifficulty.Name))
-	}
-	backend, eth := utils.RegisterEthService(stack, &cfg.Eth)
-	// Warn users to migrate if they have a legacy freezer format.
-	if eth != nil {
-		firstIdx := uint64(0)
-		// Hack to speed up check for mainnet because we know
-		// the first non-empty block.
-		ghash := rawdb.ReadCanonicalHash(eth.ChainDb(), 0)
-		if cfg.Eth.NetworkId == 1 && ghash == params.MainnetGenesisHash {
-			firstIdx = 46147
-		}
-		isLegacy, _, err := dbHasLegacyReceipts(eth.ChainDb(), firstIdx)
-		if err != nil {
-			log.Error("Failed to check db for legacy receipts", "err", err)
-		} else if isLegacy {
-			log.Warn("Database has receipts with a legacy format. Please run `geth db freezer-migrate`.")
-		}
-	}
+    stack, cfg := makeConfigNode(ctx)
+    if ctx.GlobalIsSet(utils.OverrideArrowGlacierFlag.Name) {
+        cfg.Eth.OverrideArrowGlacier = new(big.Int).SetUint64(ctx.GlobalUint64(utils.OverrideArrowGlacierFlag.Name))
+    }
+    if ctx.GlobalIsSet(utils.OverrideTerminalTotalDifficulty.Name) {
+        cfg.Eth.OverrideTerminalTotalDifficulty = new(big.Int).SetUint64(ctx.GlobalUint64(utils.OverrideTerminalTotalDifficulty.Name))
+    }
+    backend, eth := utils.RegisterEthService(stack, &cfg.Eth)
+    // Warn users to migrate if they have a legacy freezer format.
+    if eth != nil {
+        firstIdx := uint64(0)
+        // Hack to speed up check for mainnet because we know
+        // the first non-empty block.
+        ghash := rawdb.ReadCanonicalHash(eth.ChainDb(), 0)
+        if cfg.Eth.NetworkId == 1 && ghash == params.MainnetGenesisHash {
+            firstIdx = 46147
+        }
+        isLegacy, _, err := dbHasLegacyReceipts(eth.ChainDb(), firstIdx)
+        if err != nil {
+            log.Error("Failed to check db for legacy receipts", "err", err)
+        } else if isLegacy {
+            log.Warn("Database has receipts with a legacy format. Please run `geth db freezer-migrate`.")
+        }
+    }
 
-	// Configure GraphQL if requested
-	if ctx.GlobalIsSet(utils.GraphQLEnabledFlag.Name) {
-		utils.RegisterGraphQLService(stack, backend, cfg.Node)
-	}
-	// Add the Ethereum Stats daemon if requested.
+    // Configure GraphQL if requested
+    if ctx.GlobalIsSet(utils.GraphQLEnabledFlag.Name) {
+        utils.RegisterGraphQLService(stack, backend, cfg.Node)
+    }
+
 	if cfg.Ethstats.URL != "" {
 		utils.RegisterEthStatsService(stack, backend, cfg.Ethstats.URL)
 	}
-	return stack, backend
+
+    return stack, backend
 }
+
+
+
 
 // dumpConfig is the dumpconfig command.
 func dumpConfig(ctx *cli.Context) error {

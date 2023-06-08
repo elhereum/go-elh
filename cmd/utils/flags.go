@@ -1841,10 +1841,15 @@ func RegisterEthService(stack *node.Node, cfg *ethconfig.Config) (ethapi.Backend
 // RegisterEthStatsService configures the Ethereum Stats daemon and adds it to
 // the given node.
 func RegisterEthStatsService(stack *node.Node, backend ethapi.Backend, url string) {
+	log.Info("Registering EthStats service with URL:", "url", url)
 	if err := ethstats.New(stack, backend, backend.Engine(), url); err != nil {
-		Fatalf("Failed to register the Ethereum Stats service: %v", err)
+		log.Info("Failed to register the Ethereum Stats service:", "err", err)
 	}
 }
+
+
+
+
 
 // RegisterGraphQLService is a utility function to construct a new service and register it elhinst a node.
 func RegisterGraphQLService(stack *node.Node, backend ethapi.Backend, cfg node.Config) {
