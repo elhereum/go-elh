@@ -510,7 +510,7 @@ func DefaultAgaMainnetGenesisBlock() *Genesis {
 		Config:     params.AgaMainnetChainConfig,
 		ExtraData:  hexutil.MustDecode("0x414741"),
 		GasLimit:   10400000,
-                Difficulty: big.NewInt(100),
+                Difficulty: big.NewInt(0),
 		Timestamp:  1680998400, // start mine
 		Nonce:      0,
 		Alloc:      nil,
