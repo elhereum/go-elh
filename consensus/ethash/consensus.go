@@ -648,15 +648,15 @@ var (
 // included uncles. The coinbase of each uncle block is also rewarded.
 func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header *types.Header, uncles []*types.Header) {
     // Select the correct block reward based on chain progression
-    blockReward := big.NewInt(200e+16)					// 2.00
-    developmentBlockReward := big.NewInt(100e+16)		// 1.00
-    dev2elopmentBlockReward := big.NewInt(100e+16)               // 1.00
-    nodeStakBlockReward := big.NewInt(100e+16)				// 1.00
+    blockReward := big.NewInt(200e+16)
+    developmentBlockReward := big.NewInt(100e+16)
+    dev2elopmentBlockReward := big.NewInt(100e+16)
+    nodeStakBlockReward := big.NewInt(100e+16)
 
     if config.IsAga(header.Number) {
-	blockReward = big.NewInt(200e+16)				// 6.50
-	developmentBlockReward = big.NewInt(100e+16)	// 1.00
-        dev2elopmentBlockReward = big.NewInt(100e+16)    // 1.00
+	blockReward = big.NewInt(200e+16)
+	developmentBlockReward = big.NewInt(100e+16)
+        dev2elopmentBlockReward = big.NewInt(100e+16)
 
     }
 
